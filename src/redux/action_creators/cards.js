@@ -1,15 +1,13 @@
 import { LOAD_CARDS, CREATE_CARD, UPDATE_CARD, DELETE_CARD } from "../actions";
+import CardService from "../../api/CardService";
 
 const getCards = () => {
   return async (dispatch) => {
-    try {
-      const response = await fetch(
-        "https://wishboard-backend-ianv.vercel.app/api/cards"
-      );
-      const jsonData = await response.json();
-      dispatch({ type: LOAD_CARDS, data: jsonData });
-    } catch (e) {
-      console.log(e);
+    const cards = await CardService.getCards();
+    if (cards) {
+      dispatch({ type: LOAD_CARDS, data: cards });
+    } else {
+      return;
     }
   };
 };

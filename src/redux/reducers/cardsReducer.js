@@ -8,7 +8,7 @@ const cardsReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case LOAD_CARDS: {
-      return { ...state, cards: [...action.data] };
+      return { ...state, cards: action.data };
     }
 
     default:
