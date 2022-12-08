@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchCards,
@@ -10,6 +10,11 @@ import {
 import "./App.css";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCards());
+  }, []);
   return <div className="App"></div>;
 };
 
