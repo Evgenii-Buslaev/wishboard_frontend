@@ -1,12 +1,18 @@
+// cards
 const LOAD_CARDS = "GET_CARDS";
 const CREATE_CARD = "CREATE_CARD";
 const UPDATE_CARD = "UPDATE_CARD";
 const DELETE_CARD = "DELETE_CARD";
 
+// users
 const GET_USER = "GET_USER";
 const CREATE_USER = "CREATE_USER";
 const UPDATE_USER = "UPDATE_USER";
 const DELETE_USER = "DELETE_USER";
+
+// error of fetching data
+const ERROR_DISPLAY_ON = "ERROR_DISPLAY_ON";
+const ERROR_DISPLAY_OFF = "ERROR_DISPLAY_OFF";
 
 export {
   LOAD_CARDS,
@@ -17,4 +23,6 @@ export {
   CREATE_USER,
   UPDATE_USER,
   DELETE_USER,
+  ERROR_DISPLAY_ON,
+  ERROR_DISPLAY_OFF,
 };

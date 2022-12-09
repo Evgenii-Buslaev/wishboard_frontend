@@ -1,4 +1,10 @@
-import { LOAD_CARDS, CREATE_CARD, UPDATE_CARD, DELETE_CARD } from "../actions";
+import {
+  LOAD_CARDS,
+  CREATE_CARD,
+  UPDATE_CARD,
+  DELETE_CARD,
+  ERROR_DISPLAY_ON,
+} from "../actions";
 import CardService from "../../api/CardService";
 
 const fetchCards = () => {
@@ -16,8 +22,9 @@ const createCard = (card) => {
     const createdCard = await CardService.postCard(card);
     if (createdCard) {
       dispatch({ type: CREATE_CARD, data: createdCard });
+    } else {
+      dispatch({ type: ERROR_DISPLAY_ON, data: "Сервер недоступен" });
     }
-    return;
   };
 };
 

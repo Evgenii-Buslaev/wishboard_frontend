@@ -1,96 +1,42 @@
+import UserService from "../../api/UserService";
 import { GET_USER, CREATE_USER, UPDATE_USER, DELETE_USER } from "../actions";
-
-const userId = "638f0f6a13b4569a018b885d";
-
-const user = {
-  _id: "6392d8a998562b9132222289",
-  name: "Kirill",
-  password: "punksnotdead2022",
-  age: 26,
-  sex: "male",
-  __v: 0,
-};
-
-const options = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json;charset=utf-8",
-  },
-  body: JSON.stringify(user),
-};
-
-const optionsPUT = {
-  method: "PUT",
-  headers: {
-    "Content-Type": "application/json;charset=utf-8",
-  },
-  body: JSON.stringify(user),
-};
-
-const optionsDELETE = {
-  method: "DELETE",
-  headers: {
-    "Content-Type": "application/json;charset=utf-8",
-  },
-  body: JSON.stringify(user),
-};
 
 const login = () => {
   return async (dispatch) => {
-    try {
-      const response = await fetch(
-        `https://wishboard-backend-ianv.vercel.app/api/users/${userId}`
-      );
-      const user = await response.json();
+    const user = await UserService.getUser();
+    if (user) {
       dispatch({ type: GET_USER, data: user });
-    } catch (e) {
-      console.log(e);
     }
   };
 };
 
-const register = () => {
+const register = (user) => {
   return async (dispatch) => {
-    try {
-      const response = await fetch(
-        "https://wishboard-backend-ianv.vercel.app/api/users",
-        options
-      );
-      const user = await response.json();
-      dispatch({ type: CREATE_USER, data: user });
-    } catch (e) {
-      console.log(e);
+    const createdUser = await UserService.createUser(user);
+    if (createdUser) {
+      dispatch({ type: CREATE_USER, data: createdUser });
     }
+    return;
   };
 };
 
-const updateProfile = () => {
+const updateProfile = (user) => {
   return async (dispatch) => {
-    try {
-      const response = await fetch(
-        "https://wishboard-backend-ianv.vercel.app/api/users",
-        optionsPUT
-      );
-      const user = await response.json();
-      dispatch({ type: UPDATE_USER, data: user });
-    } catch (e) {
-      console.log(e);
+    const updatedUser = await UserService.editUser(user);
+    if (updatedUser) {
+      dispatch({ type: UPDATE_USER, data: updatedUser });
     }
+    return;
   };
 };
 
-const deleteProfile = () => {
+const deleteProfile = (user) => {
   return async (dispatch) => {
-    try {
-      const response = await fetch(
-        "https://wishboard-backend-ianv.vercel.app/api/users",
-        optionsDELETE
-      );
-      const user = await response.json();
-      dispatch({ type: DELETE_USER, data: user });
-    } catch (e) {
-      console.log(e);
+    const deletedUser = await UserService.removeUser(user);
+    if (deletedUser) {
+      dispatch({ type: DELETE_USER, data: deletedUser });
     }
+    return;
   };
 };
 

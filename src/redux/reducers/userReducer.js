@@ -6,15 +6,18 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case GET_USER:
+      console.log(action);
       return { ...state, user: action.data, loggedIn: true };
     case CREATE_USER:
+      console.log(action);
       return { ...state, user: action.data, loggedIn: true };
     case UPDATE_USER:
+      console.log(action);
       return { ...state, user: action.data, loggedIn: true };
     case DELETE_USER:
+      console.log(action);
       return { ...state, user: null, loggedIn: false };
     default:
       return state;
