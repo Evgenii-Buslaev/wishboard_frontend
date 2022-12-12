@@ -1,31 +1,38 @@
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import CardsList from "../components/CardsList/CardsList";
+import Card from "../components/Card/Card";
 
 export const publicRoutes = [
   {
     path: "/",
     title: "Home",
-    elemente: <Home />,
+    element: <Home />,
+    nav: true,
   },
   {
     path: "/cards",
     title: "Wishes",
-    elemente: null,
+    element: <CardsList />,
+    nav: true,
   },
   {
-    path: "/:id",
+    path: "/cards/:id",
     title: "Wish",
-    elemente: null,
+    element: <Card />,
+    nav: false,
   },
   {
     path: "/login",
     title: "Sign in",
-    elemente: <Login />,
+    element: <Login />,
+    nav: true,
   },
   {
     path: "/register",
     title: "Sign up",
-    elemente: <Register />,
+    element: <Register />,
+    nav: true,
   },
 ];
