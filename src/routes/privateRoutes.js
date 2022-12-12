@@ -1,27 +1,31 @@
+import Home from "../components/Home/Home";
+import Profile from "../components/Profile/Profile";
+import CardForm from "../components/CardForm/CardForm";
+
 export const privateRoutes = [
   {
     path: "/",
     title: "Home",
-    element: null,
+    element: <Home />,
   },
   {
     path: "/cards",
     title: "Wishes",
-    element: null,
+    element: <CardList />,
   },
   {
     path: "/:id",
     title: "Wish",
-    element: null,
-  },
-  {
-    path: "/profile",
-    title: "Profile",
-    element: null,
+    element: <Card />,
   },
   {
     path: "/post_card",
     title: "Create a wish",
-    element: null,
+    element: <CardForm />,
+  },
+  {
+    path: "/profile",
+    title: "Profile",
+    element: <Profile />,
   },
 ];

@@ -1,8 +1,12 @@
+import Home from "../components/Home/Home";
+import Login from "../components/Login/Login";
+import Register from "../components/Register/Register";
+
 export const publicRoutes = [
   {
     path: "/",
     title: "Home",
-    elemente: null,
+    elemente: <Home />,
   },
   {
     path: "/cards",
@@ -15,18 +19,13 @@ export const publicRoutes = [
     elemente: null,
   },
   {
-    path: "/profile",
-    title: "Profile",
-    elemente: null,
-  },
-  {
     path: "/login",
     title: "Sign in",
-    elemente: null,
+    elemente: <Login />,
   },
   {
     path: "/register",
     title: "Sign up",
-    elemente: null,
+    elemente: <Register />,
   },
 ];
