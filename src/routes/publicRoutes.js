@@ -7,31 +7,31 @@ import Card from "../components/Card/Card";
 export const publicRoutes = [
   {
     path: "/",
-    title: "Home",
+    title: "О проекте",
     element: <Home />,
     nav: true,
   },
   {
     path: "/cards",
-    title: "Wishes",
+    title: "Пожелания",
     element: <CardsList />,
     nav: true,
   },
   {
     path: "/cards/:id",
-    title: "Wish",
+    title: "Пожелание",
     element: <Card />,
     nav: false,
   },
   {
     path: "/login",
-    title: "Sign in",
+    title: "Войти",
     element: <Login />,
     nav: true,
   },
   {
     path: "/register",
-    title: "Sign up",
+    title: "Зарегистрироваться",
     element: <Register />,
     nav: true,
   },

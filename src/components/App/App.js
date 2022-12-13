@@ -14,7 +14,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchCards());
-    dispatch(login());
     console.log(user);
   }, []);
   return (

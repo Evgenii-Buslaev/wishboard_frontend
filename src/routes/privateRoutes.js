@@ -7,31 +7,31 @@ import CardForm from "../components/CardForm/CardForm";
 export const privateRoutes = [
   {
     path: "/",
-    title: "Home",
+    title: "О проекте",
     element: <Home />,
     nav: true,
   },
   {
     path: "/cards",
-    title: "Wishes",
+    title: "Пожелания",
     element: <CardsList />,
     nav: true,
   },
   {
     path: "/cards/:id",
-    title: "Wish",
+    title: "Пожелание",
     element: <Card />,
     nav: false,
   },
   {
     path: "/post_card",
-    title: "Create a wish",
+    title: "Создайте пожелание",
     element: <CardForm />,
     nav: true,
   },
   {
     path: "/profile",
-    title: "Profile",
+    title: "Профиль",
     element: <Profile />,
     nav: true,
   },
