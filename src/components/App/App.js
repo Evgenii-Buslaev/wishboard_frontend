@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchCards } from "../../redux/action_creators/cards";
 
 import AppRouter from "../AppRouter/AppRuter";
@@ -9,12 +10,19 @@ import "./App.css";
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigator = useNavigate();
   const user = useSelector((state) => state.userReducer);
 
   useEffect(() => {
+    navigator("/");
+    // eslint-disable-next-line
+  }, [user]);
+
+  useEffect(() => {
     dispatch(fetchCards());
-    console.log(user);
+    // eslint-disable-next-line
   }, []);
+
   return (
     <div className="App">
       <Navigation auth={user.loggedIn} />
