@@ -1,4 +1,10 @@
-import { GET_USER, CREATE_USER, UPDATE_USER, DELETE_USER } from "../actions";
+import {
+  LOG_IN,
+  LOG_OUT,
+  CREATE_USER,
+  UPDATE_USER,
+  DELETE_USER,
+} from "../actions";
 
 const initialState = {
   user: null,
@@ -7,9 +13,11 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case LOG_IN:
       console.log(action);
       return { ...state, user: action.data, loggedIn: true };
+    case LOG_OUT:
+      return { ...state, user: null, loggedIn: false };
     case CREATE_USER:
       console.log(action);
       return { ...state, user: action.data, loggedIn: true };

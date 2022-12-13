@@ -5,7 +5,8 @@ const UPDATE_CARD = "UPDATE_CARD";
 const DELETE_CARD = "DELETE_CARD";
 
 // users
-const GET_USER = "GET_USER";
+const LOG_IN = "LOG_IN";
+const LOG_OUT = "LOG_OUT";
 const CREATE_USER = "CREATE_USER";
 const UPDATE_USER = "UPDATE_USER";
 const DELETE_USER = "DELETE_USER";
@@ -19,7 +20,8 @@ export {
   CREATE_CARD,
   UPDATE_CARD,
   DELETE_CARD,
-  GET_USER,
+  LOG_IN,
+  LOG_OUT,
   CREATE_USER,
   UPDATE_USER,
   DELETE_USER,

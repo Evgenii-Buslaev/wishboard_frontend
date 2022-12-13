@@ -1,18 +1,30 @@
 import UserService from "../../api/UserService";
-import { GET_USER, CREATE_USER, UPDATE_USER, DELETE_USER } from "../actions";
+import {
+  LOG_IN,
+  LOG_OUT,
+  CREATE_USER,
+  UPDATE_USER,
+  DELETE_USER,
+} from "../actions";
 
 const login = (user_data) => {
   return async (dispatch) => {
     const user = await UserService.login(user_data);
     if (user) {
       if (user.name) {
-        dispatch({ type: GET_USER, data: user });
+        dispatch({ type: LOG_IN, data: user });
       } else {
         alert(
           "Такого пользователя не существует. Проверьте правильность введенных данных."
         );
       }
     }
+  };
+};
+
+const logout = () => {
+  return async (dispatch) => {
+    dispatch({ type: LOG_OUT });
   };
 };
 
@@ -46,4 +58,4 @@ const deleteProfile = (user) => {
   };
 };
 
-export { login, register, updateProfile, deleteProfile };
+export { login, logout, register, updateProfile, deleteProfile };
