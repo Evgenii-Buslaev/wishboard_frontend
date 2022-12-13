@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, updateProfile } from "../../redux/action_creators/user";
+import {
+  deleteProfile,
+  logout,
+  updateProfile,
+} from "../../redux/action_creators/user";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -67,6 +71,9 @@ const Profile = () => {
       </button>
       <button type="button" onClick={() => dispatch(logout())}>
         Выйти
+      </button>
+      <button type="button" onClick={() => dispatch(deleteProfile(user))}>
+        Удалить аккаунт
       </button>
     </div>
   );
