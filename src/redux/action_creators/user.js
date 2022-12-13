@@ -1,11 +1,17 @@
 import UserService from "../../api/UserService";
 import { GET_USER, CREATE_USER, UPDATE_USER, DELETE_USER } from "../actions";
 
-const login = () => {
+const login = (user_data) => {
   return async (dispatch) => {
-    const user = await UserService.getUser();
+    const user = await UserService.login(user_data);
     if (user) {
-      dispatch({ type: GET_USER, data: user });
+      if (user.name) {
+        dispatch({ type: GET_USER, data: user });
+      } else {
+        alert(
+          "Такого пользователя не существует. Проверьте правильность введенных данных."
+        );
+      }
     }
   };
 };

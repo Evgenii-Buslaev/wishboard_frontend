@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CardsList = () => {
   const cards = useSelector((state) => state.cardsReducer.cards);

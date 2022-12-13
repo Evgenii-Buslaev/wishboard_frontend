@@ -5,7 +5,6 @@ import { privateRoutes } from "../../routes/privateRoutes";
 
 const AppRouter = ({ auth }) => {
   const list = auth ? privateRoutes : publicRoutes;
-  console.log(list);
   return (
     <Routes>
       {list.map((route) => (
