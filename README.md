@@ -16,14 +16,6 @@ This is a Frontend-part of my new application for creating wishes cards.
 1. CRUD for user - register, authorization, editind and deleting profile.
 1. CRUD-operations with wishing cards for authorized users. Guests can only read existing cards.
 
-- #### Architecture of Application
-
-The application is built for use within the MVC-pattern.
-
-1. In the 'models' directory you can find entry data schemas.
-
-2. There are two classes for each data schema to handle CRUD on the server side. These are Controller classes, Service classes.
-
 - #### API
 
 To store user and cards data I used API: https://github.com/Evgenii-Buslaev/wishboard_backend.
