@@ -7,10 +7,14 @@ import { deleteProfile, logout } from "../../redux/action_creators/user";
 
 const Profile = () => {
   const dispatch = useDispatch();
+
   const [opennedEditor, setOpennedEditor] = useState(false);
   const user = useSelector((state) => state.userReducer.user);
 
   const userData = useProfile("update", user);
+
+  const logoutFromAccout = () => dispatch(logout());
+  const deleteUser = () => dispatch(deleteProfile(user));
 
   return (
     <div>
@@ -22,10 +26,10 @@ const Profile = () => {
       >
         {opennedEditor ? "Закрыть форму" : "Редактировать профиль"}
       </button>
-      <button type="button" onClick={() => dispatch(logout())}>
+      <button type="button" onClick={logoutFromAccout}>
         Выйти
       </button>
-      <button type="button" onClick={() => dispatch(deleteProfile(user))}>
+      <button type="button" onClick={deleteUser}>
         Удалить аккаунт
       </button>
     </div>
