@@ -8,20 +8,20 @@ const CommentForm = ({ user, card, createComment }) => {
 
   const [comment, setComment] = useState("");
 
-  const editedCard = {
-    ...card,
-    comments: [
-      ...card.comments,
-      { commentId: v4(), author: user.name, comment },
-    ],
-  };
-
   const submitComment = (e) => {
     e.preventDefault();
     if (!comment) {
       alert("Невозможно оставить пустой комментарий");
       return;
     }
+
+    const editedCard = {
+      ...card,
+      comments: [
+        ...card.comments,
+        { commentId: v4(), author: user.name, comment },
+      ],
+    };
     dispatch(updateCard(editedCard));
     createComment(editedCard.comments);
     setComment("");

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import CardItem from "../CardItem/CardItem";
 import CardForm from "../CardForm/CardForm";
 import CommentsList from "../CommentsList/CommentsList";
 
@@ -19,52 +20,29 @@ const Card = () => {
     // eslint-disable-next-line
     []
   );
-  const { author, title, text, createdAt, comments } = card;
 
   useEffect(() => {
     setLoggedIn(user.loggedIn);
-    setCardComments(comments);
-  }, [user.loggedIn, comments]);
+    setCardComments(card.comments);
+  }, [user.loggedIn, card.comments]);
 
   const toggleEdit = () => {
     setEditing((prevState) => !prevState);
   };
 
-  if (!loggedIn) {
-    return (
-      <>
-        <h2>{title}</h2>
-        <h5>{author}</h5>
-        <p>{text}</p>
-        <h6>{createdAt}</h6>
-      </>
-    );
-  }
-
   return (
     <div>
-      <>
-        {editing ? (
-          <CardForm action="edit" />
-        ) : (
-          <>
-            <h2>{title}</h2>
-            <h5>{author}</h5>
-            <p>{text}</p>
-            <h6>{createdAt}</h6>
-          </>
-        )}
-        {user.user.name === author ? (
-          <button onClick={toggleEdit}>Редактировать</button>
-        ) : null}
-        <CommentsList
-          card={card}
-          list={cardComments}
-          setList={setCardComments}
-          auth={user.loggedIn}
-          user={user.user}
-        />
-      </>
+      {editing ? <CardForm action="edit" /> : <CardItem data={card} />}
+      {loggedIn && user.user.name === card.author ? (
+        <button onClick={toggleEdit}>Редактировать</button>
+      ) : null}
+      <CommentsList
+        card={card}
+        list={cardComments}
+        setList={setCardComments}
+        auth={user.loggedIn}
+        user={user.user}
+      />
     </div>
   );
 };

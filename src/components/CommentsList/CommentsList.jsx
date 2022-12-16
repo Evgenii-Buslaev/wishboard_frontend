@@ -37,7 +37,9 @@ const CommentsList = ({ auth, user, list, setList, card }) => {
           <h4>{comment.comment}</h4>
         </div>
       ))}
-      <CommentForm user={user} card={card} createComment={setList} />
+      {auth ? (
+        <CommentForm user={user} card={card} createComment={setList} />
+      ) : null}
     </div>
   );
 };
