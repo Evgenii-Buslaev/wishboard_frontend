@@ -14,22 +14,20 @@ const Card = () => {
 
   return (
     <div>
-      {user?.name === author ? (
-        <>
+      <>
+        {user?.name === author ? (
           <CardForm action="edit" />
-          <CommentsList />
-          <CommentForm />
-        </>
-      ) : (
-        <>
-          <h2>{title}</h2>
-          <h5>{author}</h5>
-          <p>{text}</p>
-          <h6>{createdAt}</h6>
-          <CommentsList />
-          <CommentForm />
-        </>
-      )}
+        ) : (
+          <>
+            <h2>{title}</h2>
+            <h5>{author}</h5>
+            <p>{text}</p>
+            <h6>{createdAt}</h6>
+          </>
+        )}
+        <CommentsList />
+        <CommentForm />
+      </>
     </div>
   );
 };
