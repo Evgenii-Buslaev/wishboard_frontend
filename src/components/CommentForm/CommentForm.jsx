@@ -1,36 +1,42 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCard } from "../../redux/action_creators/cards";
 
 const CommentForm = () => {
-  const [comment, setComment] = useState("");
   const params = useParams();
   const dispatch = useDispatch();
 
-  const card = useSelector((state) =>
-    state.cardsReducer.cards.find((card) => card._id === params.id)
+  const [comment, setComment] = useState("");
+
+  const cards = useSelector((state) => state.cardsReducer.cards);
+  const card = useMemo(
+    () => cards.find((card) => card._id === params.id), // eslint-disable-next-line
+    []
   );
   const user = useSelector((state) => state.userReducer.user);
 
-  console.log(card);
-  console.log(user);
+  const editedCard = user
+    ? {
+        ...card,
+        comments: [...card.comments, { author: user.name, comment }],
+      }
+    : null;
 
-  /*   const editedCard = { ...card, comments: [...card?.comments, comment] }; */
-
-  /*   const submitComment = (e) => {
+  const submitComment = (e) => {
     e.preventDefault();
     if (!comment) {
       alert("Невозможно оставить пустой комментарий");
       return;
     }
     dispatch(updateCard(editedCard));
-  }; */
+    setComment("");
+  };
 
   return (
     <>
       {user ? (
-        <form>
+        <form onSubmit={(e) => submitComment(e)}>
           <input
             type="text"
             value={comment}
