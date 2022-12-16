@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import CardForm from "../CardForm/CardForm";
 import CommentForm from "../CommentForm/CommentForm";
+import CommentsList from "../CommentsList/CommentsList";
 
 const Card = () => {
   const params = useParams();
@@ -16,6 +17,7 @@ const Card = () => {
       {user?.name === author ? (
         <>
           <CardForm action="edit" />
+          <CommentsList />
           <CommentForm />
         </>
       ) : (
@@ -24,6 +26,7 @@ const Card = () => {
           <h5>{author}</h5>
           <p>{text}</p>
           <h6>{createdAt}</h6>
+          <CommentsList />
           <CommentForm />
         </>
       )}
