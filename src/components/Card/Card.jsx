@@ -1,21 +1,50 @@
+import { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import CardForm from "../CardForm/CardForm";
-import CommentForm from "../CommentForm/CommentForm";
 import CommentsList from "../CommentsList/CommentsList";
 
 const Card = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [cardComments, setCardComments] = useState([]);
+
   const params = useParams();
-  const user = useSelector((state) => state.userReducer.user);
+  const user = useSelector((state) => state.userReducer);
   const cards = useSelector((state) => state.cardsReducer.cards);
-  const card = cards.find((card) => card._id === params.id);
-  const { author, title, text, createdAt } = card;
+
+  const card = useMemo(
+    () => cards.find((card) => card._id === params.id),
+    // eslint-disable-next-line
+    []
+  );
+  const { author, title, text, createdAt, comments } = card;
+
+  useEffect(() => {
+    setLoggedIn(user.loggedIn);
+    setCardComments(comments);
+  }, [user.loggedIn, comments]);
+
+  const toggleEdit = () => {
+    setEditing((prevState) => !prevState);
+  };
+
+  if (!loggedIn) {
+    return (
+      <>
+        <h2>{title}</h2>
+        <h5>{author}</h5>
+        <p>{text}</p>
+        <h6>{createdAt}</h6>
+      </>
+    );
+  }
 
   return (
     <div>
       <>
-        {user?.name === author ? (
+        {editing ? (
           <CardForm action="edit" />
         ) : (
           <>
@@ -25,8 +54,16 @@ const Card = () => {
             <h6>{createdAt}</h6>
           </>
         )}
-        <CommentsList />
-        <CommentForm />
+        {user.user.name === author ? (
+          <button onClick={toggleEdit}>Редактировать</button>
+        ) : null}
+        <CommentsList
+          card={card}
+          list={cardComments}
+          setList={setCardComments}
+          auth={user.loggedIn}
+          user={user.user}
+        />
       </>
     </div>
   );
