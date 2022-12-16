@@ -26,7 +26,7 @@ export const privateRoutes = [
   {
     path: "/post_card",
     title: "Создайте пожелание",
-    element: <CardForm />,
+    element: <CardForm action="create" />,
     nav: true,
   },
   {

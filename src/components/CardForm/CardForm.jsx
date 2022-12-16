@@ -1,7 +1,9 @@
 import useCard from "../../hooks/useCard";
 
-const CardForm = () => {
-  const { title, setTitle, text, setText, author, submit } = useCard();
+const CardForm = (action) => {
+  const { title, setTitle, text, setText, author, submit } = useCard(action);
+
+  const actionText = action === "create" ? "Создать" : "Сохранить";
 
   return (
     <form onSubmit={(e) => submit(e)}>
@@ -23,7 +25,7 @@ const CardForm = () => {
         onChange={(e) => setText(e.target.value)}
         placeholder="Введите текст пожелния..."
       />
-      <button type="submit">Создать</button>
+      <button type="submit">{actionText}</button>
     </form>
   );
 };
