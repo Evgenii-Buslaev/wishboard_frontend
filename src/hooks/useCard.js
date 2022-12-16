@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+
 import { createCard, updateCard } from "../redux/action_creators/cards";
 
 const useCard = () => {
@@ -13,6 +14,7 @@ const useCard = () => {
 
   const memoCard = useMemo(
     () => cards.find((card) => card._id === params.id),
+    // eslint-disable-next-line
     []
   );
 
