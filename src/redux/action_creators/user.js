@@ -5,11 +5,25 @@ import {
   CREATE_USER,
   UPDATE_USER,
   DELETE_USER,
+  APP_LOADING,
 } from "../actions";
+
+const loadReq = () => {
+  return async (dispatch) => {
+    dispatch({ type: APP_LOADING, data: true });
+  };
+};
+
+const appLoaded = () => {
+  return async (dispatch) => {
+    dispatch({ type: APP_LOADING, data: false });
+  };
+};
 
 const login = (user_data) => {
   return async (dispatch) => {
     const user = await UserService.login(user_data);
+    dispatch(loadReq());
     if (user) {
       if (user.name) {
         dispatch({ type: LOG_IN, data: user });
@@ -19,6 +33,7 @@ const login = (user_data) => {
         );
       }
     }
+    dispatch(appLoaded());
   };
 };
 
@@ -30,30 +45,36 @@ const logout = () => {
 
 const register = (user) => {
   return async (dispatch) => {
+    dispatch(loadReq());
     const createdUser = await UserService.createUser(user);
     if (createdUser) {
       dispatch({ type: CREATE_USER, data: createdUser });
     }
+    dispatch(appLoaded());
     return;
   };
 };
 
 const updateProfile = (user) => {
   return async (dispatch) => {
+    dispatch(loadReq());
     const updatedUser = await UserService.editUser(user);
     if (updatedUser) {
       dispatch({ type: UPDATE_USER, data: updatedUser });
     }
+    dispatch(appLoaded());
     return;
   };
 };
 
 const deleteProfile = (user) => {
   return async (dispatch) => {
+    dispatch(loadReq());
     const deletedUser = await UserService.removeUser(user);
     if (deletedUser) {
       dispatch({ type: DELETE_USER, data: deletedUser });
     }
+    dispatch(appLoaded());
     return;
   };
 };

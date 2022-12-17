@@ -1,7 +1,8 @@
-import { ERROR_DISPLAY_ON, ERROR_DISPLAY_OFF } from "../actions";
+import { ERROR_DISPLAY_ON, ERROR_DISPLAY_OFF, APP_LOADING } from "../actions";
 
 const initialState = {
   error: null,
+  loading: false,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ const appReducer = (state = initialState, action) => {
       return { ...state, error: action.data };
     case ERROR_DISPLAY_OFF:
       return { ...state, error: null };
+    case APP_LOADING:
+      return { ...state, loading: action.data };
     default:
       return state;
   }

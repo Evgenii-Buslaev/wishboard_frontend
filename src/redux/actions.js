@@ -11,9 +11,13 @@ const CREATE_USER = "CREATE_USER";
 const UPDATE_USER = "UPDATE_USER";
 const DELETE_USER = "DELETE_USER";
 
+// app
 // error of fetching data
 const ERROR_DISPLAY_ON = "ERROR_DISPLAY_ON";
 const ERROR_DISPLAY_OFF = "ERROR_DISPLAY_OFF";
+
+// loading
+const APP_LOADING = "APP_LOADING";
 
 export {
   LOAD_CARDS,
@@ -27,4 +31,5 @@ export {
   DELETE_USER,
   ERROR_DISPLAY_ON,
   ERROR_DISPLAY_OFF,
+  APP_LOADING,
 };

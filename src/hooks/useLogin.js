@@ -15,13 +15,12 @@ const useLogin = () => {
     e.preventDefault();
     if (loginValidate({ name: username, password })) {
       dispatch(login({ name: username, password }));
-      navigator("/");
     } else {
       alert("Заполните все обязательные поля.");
     }
   };
 
-  return { username, setUsername, password, setPassword, submit };
+  return { username, setUsername, password, setPassword, submit, navigator };
 };
 
 export default useLogin;

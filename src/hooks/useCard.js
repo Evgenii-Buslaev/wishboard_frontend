@@ -20,7 +20,7 @@ const useCard = () => {
 
   const [title, setTitle] = useState(memoCard?.title || "");
   const [text, setText] = useState(memoCard?.text || "");
-  const [picture, setPicture] = useState(null);
+  const [picture, setPicture] = useState(memoCard?.picture || null);
 
   let newCard;
 
