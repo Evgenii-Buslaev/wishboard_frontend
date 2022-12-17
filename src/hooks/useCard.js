@@ -20,6 +20,7 @@ const useCard = () => {
 
   const [title, setTitle] = useState(memoCard?.title || "");
   const [text, setText] = useState(memoCard?.text || "");
+  const [picture, setPicture] = useState(null);
 
   let newCard;
 
@@ -27,10 +28,10 @@ const useCard = () => {
     e.preventDefault();
     if (title && text) {
       if (!memoCard) {
-        newCard = { author, title, text };
+        newCard = { author, title, text, picture };
         dispatch(createCard(newCard));
       } else {
-        newCard = { ...memoCard, author, title, text };
+        newCard = { ...memoCard, author, title, text, picture };
         dispatch(updateCard(newCard));
       }
       navigator("/cards");
@@ -42,6 +43,8 @@ const useCard = () => {
     setTitle,
     text,
     setText,
+    picture,
+    setPicture,
     author,
     newCard,
     submit,

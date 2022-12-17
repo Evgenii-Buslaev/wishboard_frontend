@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { updateCard } from "../../redux/action_creators/cards";
 
 const CardItem = ({ user, data }) => {
-  const { author, title, text, createdAt, likes } = data;
+  const { author, title, text, picture, createdAt, likes } = data;
   const dispatch = useDispatch();
 
   const [cardLikes, setCardLikes] = useState(likes.length);
@@ -45,6 +45,7 @@ const CardItem = ({ user, data }) => {
       <h2>{title}</h2>
       <h5>{author}</h5>
       <p>{text}</p>
+      {picture ? <img style={{ width: 300 }} src={picture} alt="card" /> : null}
       <h6>{createdAt}</h6>
       <h6 onClick={toggleLike}>{cardLikes}</h6>
     </div>
