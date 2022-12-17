@@ -1,8 +1,10 @@
 import { useState } from "react";
-/* import { useDispatch } from "react-redux"; */
+import { useDispatch } from "react-redux";
+import { updateCard } from "../../redux/action_creators/cards";
 
 const CardItem = ({ user, data }) => {
   const { author, title, text, createdAt, likes } = data;
+  const dispatch = useDispatch();
 
   const [cardLikes, setCardLikes] = useState(likes.length);
   const [likedByUser, setLikedByUser] = useState(displayUserLike());
@@ -11,7 +13,7 @@ const CardItem = ({ user, data }) => {
     if (!user.loggedIn) {
       return false;
     } else {
-      return likes.some((like) => like.author === user.name);
+      return likes.some((like) => like === user.user.name);
     }
   }
 
@@ -22,9 +24,18 @@ const CardItem = ({ user, data }) => {
       if (likedByUser) {
         setCardLikes((prevState) => prevState - 1);
         setLikedByUser(false);
+        dispatch(
+          updateCard({
+            ...data,
+            likes: data.likes.filter((like) => like !== user.user.name),
+          })
+        );
       } else {
         setCardLikes((prevState) => prevState + 1);
         setLikedByUser(true);
+        dispatch(
+          updateCard({ ...data, likes: [...data.likes, user.user.name] })
+        );
       }
     }
   };
