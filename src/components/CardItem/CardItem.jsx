@@ -14,7 +14,7 @@ const CardItem = ({ user, data }) => {
     if (!user.loggedIn) {
       return false;
     } else {
-      return likes.some((like) => like === user.user.name);
+      return likes.some((like) => like._id === user.user._id);
     }
   }
 
