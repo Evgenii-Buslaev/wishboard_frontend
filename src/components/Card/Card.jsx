@@ -37,7 +37,6 @@ const Card = () => {
         <button onClick={toggleEdit}>Редактировать</button>
       ) : null}
       <CommentsList
-        card={card}
         list={cardComments}
         setList={setCardComments}
         auth={user.loggedIn}

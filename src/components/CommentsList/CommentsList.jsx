@@ -1,10 +1,16 @@
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import CommentForm from "../CommentForm/CommentForm";
 import { updateCard } from "../../redux/action_creators/cards";
 
-const CommentsList = ({ auth, user, list, setList, card }) => {
+const CommentsList = ({ auth, user, list, setList }) => {
   const dispatch = useDispatch();
+  const params = useParams();
+
+  const card = useSelector((state) =>
+    state.cardsReducer.cards.find((card) => card._id === params.id)
+  );
 
   const removeComment = (e, author) => {
     if (!auth) {
@@ -37,9 +43,7 @@ const CommentsList = ({ auth, user, list, setList, card }) => {
           <h4>{comment.comment}</h4>
         </div>
       ))}
-      {auth ? (
-        <CommentForm user={user} card={card} createComment={setList} />
-      ) : null}
+      {auth ? <CommentForm user={user} createComment={setList} /> : null}
     </div>
   );
 };

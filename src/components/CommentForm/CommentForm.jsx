@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { updateCard } from "../../redux/action_creators/cards";
 import { v4 } from "uuid";
 
-const CommentForm = ({ user, card, createComment }) => {
+const CommentForm = ({ user, createComment }) => {
   const dispatch = useDispatch();
+  const params = useParams();
 
   const [comment, setComment] = useState("");
+
+  const card = useSelector((state) =>
+    state.cardsReducer.cards.find((card) => card._id === params.id)
+  );
 
   const submitComment = (e) => {
     e.preventDefault();
