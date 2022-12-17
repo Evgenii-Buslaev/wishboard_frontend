@@ -32,7 +32,7 @@ const Card = () => {
 
   return (
     <div>
-      {editing ? <CardForm action="edit" /> : <CardItem data={card} />}
+      {editing ? <CardForm action="edit" /> : <CardItem user={user} data={card} />}
       {loggedIn && user.user.name === card.author ? (
         <button onClick={toggleEdit}>Редактировать</button>
       ) : null}
