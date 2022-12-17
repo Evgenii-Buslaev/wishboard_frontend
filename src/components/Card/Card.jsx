@@ -32,16 +32,24 @@ const Card = () => {
 
   return (
     <div>
-      {editing ? <CardForm action="edit" /> : <CardItem user={user} data={card} />}
+      {editing ? (
+        <CardForm action="edit" />
+      ) : (
+        <CardItem user={user} data={card} />
+      )}
       {loggedIn && user.user.name === card.author ? (
-        <button onClick={toggleEdit}>Редактировать</button>
+        <button onClick={toggleEdit}>
+          {editing ? "Отменить редактирование" : "Редактировать"}
+        </button>
       ) : null}
-      <CommentsList
-        list={cardComments}
-        setList={setCardComments}
-        auth={user.loggedIn}
-        user={user.user}
-      />
+      {editing ? null : (
+        <CommentsList
+          list={cardComments}
+          setList={setCardComments}
+          auth={user.loggedIn}
+          user={user.user}
+        />
+      )}
     </div>
   );
 };
