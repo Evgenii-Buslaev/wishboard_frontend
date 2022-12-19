@@ -1,10 +1,25 @@
+// borders
 @mixin ui-border {
   border-radius: 1rem;
   padding: 15px 20px;
 }
 
+// positions
 @mixin row-position {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+@mixin evenly-position {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@mixin column-position {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }

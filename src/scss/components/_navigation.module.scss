@@ -1,0 +1,43 @@
+@import "../colors";
+@import "../mixins";
+
+.navigation {
+  width: 100vw;
+  height: 80px;
+  z-index: 2;
+  background-color: $background-nav;
+  @include evenly-position;
+
+  a {
+    padding: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    color: $nav-item;
+  }
+
+  a:hover {
+    color: $nav-item-hover;
+    border-radius: 20px;
+    background-color: rgb(77, 62, 62);
+  }
+}
+
+.toggle_down,
+.toggle_up {
+  position: absolute;
+  top: 30px;
+  left: 90px;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.toggle_up {
+  transform: rotate(180deg);
+}
+
+.toggle_down:hover,
+.toggle_up:hover {
+  opacity: 0.4;
+}

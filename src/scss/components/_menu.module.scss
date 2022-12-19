@@ -1,0 +1,25 @@
+@import "../mixins";
+@import "../colors";
+
+.menu {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  padding: 1rem 0;
+  width: 200px;
+  height: auto;
+  transition-property: top;
+  transition-duration: 0.5s;
+  background-color: $background-nav;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  @include column-position;
+}
+
+.up {
+  top: -100vh;
+}
+
+.down {
+  top: 80px;
+}
