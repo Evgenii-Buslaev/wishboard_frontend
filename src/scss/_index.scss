@@ -1,0 +1,14 @@
+@import url("./_reset.scss");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+@import "./colors";
+
+@import url("./UI/_input.scss");
+@import url("./UI/_button.scss");
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $background-light;
+}

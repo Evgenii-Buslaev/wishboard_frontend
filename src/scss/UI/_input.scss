@@ -1,0 +1,14 @@
+@import "../colors";
+@import "../mixins";
+
+input,
+select {
+  font-size: 16px;
+  color: $font-ui-light;
+  background-color: $border-light;
+  @include ui-border;
+}
+
+input::placeholder {
+  color: $placeholder-font-light;
+}
