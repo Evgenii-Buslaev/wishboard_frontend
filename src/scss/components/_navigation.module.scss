@@ -4,12 +4,14 @@
 .navigation {
   width: 100vw;
   height: 80px;
-  z-index: 2;
+  padding-left: 150px;
+  z-index: 3;
   background-color: $background-nav;
   @include evenly-position;
 
   a {
-    padding: 20px;
+    margin: 0 20px;
+    padding: 10px 20px;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
@@ -19,7 +21,7 @@
   a:hover {
     color: $nav-item-hover;
     border-radius: 20px;
-    background-color: rgb(77, 62, 62);
+    background-color: rgb(145, 144, 144);
   }
 }
 
@@ -27,7 +29,7 @@
 .toggle_up {
   position: absolute;
   top: 30px;
-  left: 90px;
+  left: 100px;
   transition-property: opacity;
   transition-duration: 0.5s;
   cursor: pointer;
@@ -40,4 +42,63 @@
 .toggle_down:hover,
 .toggle_up:hover {
   opacity: 0.4;
+}
+
+.search {
+  width: 60vw;
+  background-color: rgb(182, 182, 182);
+}
+
+.authLinks {
+  width: 350px;
+  height: 100%;
+  @include row-position;
+
+  a {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .navigation {
+    padding-left: 55px;
+  }
+  .toggle_down,
+  .toggle_up {
+    left: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .authLinks {
+    @include column-position;
+
+    a {
+      padding: 10px 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .navigation {
+    padding-left: 35px;
+  }
+  .authLinks {
+    width: 300px;
+    height: 100%;
+    @include column-position;
+
+    a {
+      font-size: 12px;
+      padding: 10px 10px;
+      margin: 0;
+    }
+  }
+  .toggle_down,
+  .toggle_up {
+    top: 35px;
+    left: 10px;
+    width: 15px;
+  }
 }

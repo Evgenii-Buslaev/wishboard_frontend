@@ -12,3 +12,10 @@ select {
 input::placeholder {
   color: $placeholder-font-light;
 }
+
+@media (max-width: 600px) {
+  input,
+  select {
+    font-size: 12px;
+  }
+}

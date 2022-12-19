@@ -20,14 +20,14 @@ const Navigation = ({ auth }) => {
         alt="open menu"
         onClick={toggleMenu}
       />
-      <input type="text" />
+      <input type="text" className={styles.search} />
       {auth ? (
         <Link to="/profile">Профиль</Link>
       ) : (
-        <>
+        <div className={styles.authLinks}>
           <Link to="/login">Войти</Link>
           <Link to="/register">Зарегистрироваться</Link>
-        </>
+        </div>
       )}
       <Menu auth={auth} openned={menuOpenned} />
     </nav>
