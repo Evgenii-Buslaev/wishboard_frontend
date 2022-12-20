@@ -2,9 +2,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 
-import styles from "../../scss/components/_login.module.scss";
+import close from "../../assets/icons/close.svg";
 
 import Preloader from "../Preloader/Preloader";
+import styles from "../../scss/components/_login.module.scss";
 
 const Login = () => {
   const navigator = useNavigate();
@@ -18,7 +19,6 @@ const Login = () => {
       e.target.tagName !== "BUTTON"
     )
       navigator("/");
-    console.log(e.target);
   };
 
   return (
@@ -27,6 +27,7 @@ const Login = () => {
         <Preloader />
       ) : (
         <form className={styles.form} onSubmit={(e) => submit(e)}>
+          <img src={close} alt="close" />
           <input
             type="text"
             placeholder="Имя пользователя"

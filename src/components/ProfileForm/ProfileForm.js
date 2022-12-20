@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
+import styles from "../../scss/components/_register.module.scss";
+
+import close from "../../assets/icons/close.svg";
+
 const ProfileForm = ({ data }) => {
+  const navigator = useNavigate();
   const {
     name,
     password,
@@ -12,8 +19,19 @@ const ProfileForm = ({ data }) => {
     submit,
   } = data;
 
+  const closePopup = (e) => {
+    if (
+      e.target.tagName !== "FORM" &&
+      e.target.tagName !== "INPUT" &&
+      e.target.tagName !== "BUTTON" &&
+      e.target.tagName !== "SELECT"
+    )
+      navigator("/");
+  };
+
   return (
-    <form onSubmit={(e) => submit(e)}>
+    <form onSubmit={(e) => submit(e)} className={styles.form}>
+      <img src={close} alt="close" onClick={(e) => closePopup(e)} />
       <input
         type="text"
         placeholder="Имя пользователя"
