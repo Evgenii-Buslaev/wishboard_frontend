@@ -5,6 +5,7 @@ import { fetchCards } from "../../redux/action_creators/cards";
 
 import AppRouter from "../AppRouter/AppRuter";
 import Navigation from "../Navigation/Navigation";
+import Preloader from "../Preloader/Preloader";
 
 import "./App.css";
 
@@ -12,6 +13,7 @@ const App = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const user = useSelector((state) => state.userReducer);
+  const app = useSelector((state) => state.appReducer);
 
   useEffect(() => {
     navigator("/");
@@ -26,7 +28,7 @@ const App = () => {
   return (
     <div className="App">
       <Navigation auth={user.loggedIn} />
-      <AppRouter auth={user.loggedIn} />
+      {app.loading ? <Preloader /> : <AppRouter auth={user.loggedIn} />}
     </div>
   );
 };
