@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import ProfileForm from "../ProfileForm/ProfileForm";
+import Register from "../Register/Register";
 import Preloader from "../Preloader/Preloader";
 import useProfile from "../../hooks/useProfile";
 import { deleteProfile, logout } from "../../redux/action_creators/user";
@@ -25,7 +25,7 @@ const Profile = () => {
       ) : (
         <>
           <h3>{`Здравствуйте, ${user.name}`}</h3>
-          {opennedEditor ? <ProfileForm data={userData} /> : null}
+          {opennedEditor ? <Register /> : null}
           <button
             type="button"
             onClick={() => setOpennedEditor((prevState) => !prevState)}

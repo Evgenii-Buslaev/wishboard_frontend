@@ -1,28 +1,19 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
+import usePopup from "../../hooks/usePopup";
 
 import close from "../../assets/icons/close.svg";
 
 import Preloader from "../Preloader/Preloader";
-import styles from "../../scss/components/_login.module.scss";
+import styles from "../../scss/components/_modal.module.scss";
 
 const Login = () => {
-  const navigator = useNavigate();
   const { username, password, setUsername, setPassword, submit } = useLogin();
   const preload = useSelector((state) => state.appReducer.loading);
-
-  const closePopup = (e) => {
-    if (
-      e.target.tagName !== "FORM" &&
-      e.target.tagName !== "INPUT" &&
-      e.target.tagName !== "BUTTON"
-    )
-      navigator("/");
-  };
+  const closePopup = usePopup();
 
   return (
-    <div className={styles.login} onClick={(e) => closePopup(e)}>
+    <div className={styles.modal} onClick={(e) => closePopup(e)}>
       {preload ? (
         <Preloader />
       ) : (
