@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-import home from "../../assets/icons/home.svg";
-import board from "../../assets/icons/board.svg";
-import user from "../../assets/icons/user.svg";
+import { ReactComponent as HomeBtn } from "../../assets/icons/home.svg";
+import { ReactComponent as BoardBtn } from "../../assets/icons/board.svg";
+import { ReactComponent as UserBtn } from "../../assets/icons/user.svg";
 import styles from "../../scss/components/_navigation.module.scss";
 
 const Navigation = ({ auth }) => {
   return (
     <nav className={styles.navigation}>
       <Link to="/">
-        <img src={home} alt="home" />
+        <HomeBtn className={styles.nav_btn} />
       </Link>
       <Link to="/cards">
-        <img src={board} alt="wishboard" />
+        <BoardBtn className={styles.nav_btn} />
       </Link>
       <input
         type="text"
@@ -21,7 +21,7 @@ const Navigation = ({ auth }) => {
       />
       {auth ? (
         <Link to="/profile">
-          <img src={user} alt="profile" />
+          <UserBtn className={styles.nav_btn} />
         </Link>
       ) : (
         <div className={styles.authLinks}>

@@ -9,19 +9,19 @@
   @include evenly-position;
 
   a {
-    /*     margin: 0 20px;
-    padding: 10px 20px; */
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
     color: $nav-item;
   }
 
-  /*   a:hover {
-    color: $nav-item-hover;
-    border-radius: 20px;
-    background-color: rgb(145, 144, 144);
-  } */
+  a:hover {
+    color: rgb(107, 58, 58);
+  }
+
+  .nav_btn:hover {
+    fill: rgb(107, 58, 58);
+  }
 }
 
 .toggle_down,
@@ -79,7 +79,7 @@
 
 @media (max-width: 700px) {
   .search {
-    width: 40vw;
+    width: 45vw;
   }
 
   img {
