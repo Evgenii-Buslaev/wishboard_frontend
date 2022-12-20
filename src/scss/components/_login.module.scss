@@ -1,0 +1,20 @@
+@import "../colors";
+@import "../mixins";
+
+.login {
+  @include modal;
+}
+
+.form {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.397);
+  border-radius: 2rem;
+  @include column-position;
+
+  input,
+  button {
+    margin: 10px;
+  }
+}

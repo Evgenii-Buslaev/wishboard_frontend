@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import styles from "../../scss/components/_cards.module.scss";
 
 import CardItem from "../CardItem/CardItem";
 import CardForm from "../CardForm/CardForm";
@@ -31,7 +32,7 @@ const Card = () => {
   };
 
   return (
-    <div>
+    <div className={styles.cards}>
       {editing ? (
         <CardForm action="edit" />
       ) : (

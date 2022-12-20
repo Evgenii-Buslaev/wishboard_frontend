@@ -1,18 +1,32 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
+
+import styles from "../../scss/components/_login.module.scss";
 
 import Preloader from "../Preloader/Preloader";
 
 const Login = () => {
+  const navigator = useNavigate();
   const { username, password, setUsername, setPassword, submit } = useLogin();
   const preload = useSelector((state) => state.appReducer.loading);
 
+  const closePopup = (e) => {
+    if (
+      e.target.tagName !== "FORM" &&
+      e.target.tagName !== "INPUT" &&
+      e.target.tagName !== "BUTTON"
+    )
+      navigator("/");
+    console.log(e.target);
+  };
+
   return (
-    <>
+    <div className={styles.login} onClick={(e) => closePopup(e)}>
       {preload ? (
         <Preloader />
       ) : (
-        <form onSubmit={(e) => submit(e)}>
+        <form className={styles.form} onSubmit={(e) => submit(e)}>
           <input
             type="text"
             placeholder="Имя пользователя"
@@ -28,7 +42,7 @@ const Login = () => {
           <button type="submit">Войти</button>
         </form>
       )}
-    </>
+    </div>
   );
 };
 

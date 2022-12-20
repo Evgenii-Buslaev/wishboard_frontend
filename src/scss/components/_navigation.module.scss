@@ -16,11 +16,11 @@
   }
 
   a:hover {
-    color: rgb(107, 58, 58);
+    color: $link-hover;
   }
 
   .nav_btn:hover {
-    fill: rgb(107, 58, 58);
+    fill: $link-hover;
   }
 }
 
@@ -82,7 +82,7 @@
     width: 45vw;
   }
 
-  img {
+  .nav_btn {
     width: 20px;
     height: 20px;
   }
