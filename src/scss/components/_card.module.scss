@@ -53,3 +53,92 @@
     fill: rgba(255, 0, 0, 0.664);
   }
 }
+
+.cardItem {
+  margin: 10px auto;
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: content;
+  background-color: rgba(68, 143, 53, 0.281);
+  border-radius: 20px;
+
+  .photoBlock {
+    margin: 20px;
+    @include column-position;
+
+    h2 {
+      margin: 5px;
+      align-self: flex-start;
+    }
+    h3 {
+      margin: 10px;
+    }
+    img {
+      width: 400px;
+      border-radius: 20px;
+    }
+  }
+
+  .infoBlock {
+    margin: 20px;
+    @include column-position;
+
+    .likes {
+      margin: 10px;
+      width: 35px;
+      cursor: pointer;
+      align-self: flex-end;
+      @include row-position;
+
+      &:hover {
+        .like {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .likes_active {
+      .like {
+        fill: rgba(255, 0, 0, 0.664);
+      }
+    }
+
+    .text {
+      margin: 20px;
+      width: 400px;
+      text-align: left;
+      overflow-wrap: break-word;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .cardItem {
+    margin: 15px auto;
+    width: auto;
+    @include column-position;
+
+    .photoBlock {
+      width: 90vw;
+      margin: 5px;
+      @media (max-width: 700px) {
+        img {
+          width: 300px;
+        }
+      }
+    }
+    .infoBlock {
+      width: 90vw;
+      margin: 5px;
+      .likes {
+        align-self: center;
+      }
+      .text {
+        margin: 5px;
+        width: auto;
+      }
+    }
+  }
+}

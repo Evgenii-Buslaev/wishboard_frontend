@@ -5,7 +5,6 @@ import styles from "../../scss/components/_cards.module.scss";
 
 import CardItem from "../CardItem/CardItem";
 import CardForm from "../CardForm/CardForm";
-import CommentsList from "../CommentsList/CommentsList";
 
 const Card = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -43,14 +42,6 @@ const Card = () => {
           {editing ? "Отменить редактирование" : "Редактировать"}
         </button>
       ) : null}
-      {editing ? null : (
-        <CommentsList
-          list={cardComments}
-          setList={setCardComments}
-          auth={user.loggedIn}
-          user={user.user}
-        />
-      )}
     </div>
   );
 };
