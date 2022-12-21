@@ -1,51 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateCard } from "../../redux/action_creators/cards";
+import useLike from "../../hooks/useLike";
 
-const CardItem = ({ user, data }) => {
+const CardItem = ({ data }) => {
   const { author, title, text, picture, createdAt, likes } = data;
-  const dispatch = useDispatch();
+  const [likedByUser, cardLikes, toggleLike] = useLike(data);
 
-  const [cardLikes, setCardLikes] = useState(likes.length);
-  const [likedByUser, setLikedByUser] = useState(displayUserLike());
   const [displayLikers, setDisplayLikers] = useState(false);
-
-  function displayUserLike() {
-    if (!user.loggedIn) {
-      return false;
-    } else {
-      return likes.some((like) => like._id === user.user._id);
-    }
-  }
-
-  const toggleLike = () => {
-    if (!user.loggedIn) {
-      return;
-    } else {
-      if (likedByUser) {
-        setCardLikes((prevState) => prevState - 1);
-        setLikedByUser(false);
-        dispatch(
-          updateCard({
-            ...data,
-            likes: data.likes.filter((like) => like._id !== user.user._id),
-          })
-        );
-      } else {
-        setCardLikes((prevState) => prevState + 1);
-        setLikedByUser(true);
-        dispatch(
-          updateCard({
-            ...data,
-            likes: [
-              ...data.likes,
-              { _id: user.user._id, name: user.user.name },
-            ],
-          })
-        );
-      }
-    }
-  };
 
   const toggleDisplayLikers = () => {
     setDisplayLikers((prevState) => !prevState);

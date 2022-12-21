@@ -34,10 +34,18 @@
     @include evenly-position;
   }
 
+  .like:hover {
+    opacity: 0.5;
+  }
+
   .userActionsItem {
     width: 35px;
     height: 35px;
     cursor: pointer;
     @include row-position;
+  }
+
+  .userActionsItem_active {
+    fill: rgba(255, 0, 0, 0.664);
   }
 }
