@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import useLike from "../../hooks/useLike";
 
-import styles from "../../scss/components/_card.module.scss";
-
 import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import comment from "../../assets/icons/comment.svg";
+import defaultIcon from "../../assets/icons/default.jpg";
+
+import styles from "../../scss/components/_card.module.scss";
 
 const CardListItem = ({ data }) => {
   const navigator = useNavigate();
@@ -25,7 +26,7 @@ const CardListItem = ({ data }) => {
     <div className={styles.cardPreview} key={_id} onClick={(e) => navigate(e)}>
       <h2 className={styles.author}>{author}</h2>
       <h3 className={styles.title}>{title}</h3>
-      <img className={styles.cover} src={picture} alt="cover" />
+      <img className={styles.cover} src={picture || defaultIcon} alt="cover" />
       <div className={styles.userActions}>
         <div
           className={

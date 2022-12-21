@@ -1,0 +1,22 @@
+@import "../colors";
+@import "../mixins";
+
+.container {
+  width: 100vw;
+  .list {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .add {
+    margin: 20px auto;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

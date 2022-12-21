@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useLike from "../../hooks/useLike";
 
+import defaultIcon from "../../assets/icons/default.jpg";
+
 const CardItem = ({ data }) => {
   const { author, title, text, picture, createdAt, likes } = data;
   const [likedByUser, cardLikes, toggleLike] = useLike(data);
@@ -16,7 +18,9 @@ const CardItem = ({ data }) => {
       <h2>{title}</h2>
       <h5>{author}</h5>
       <p>{text}</p>
-      {picture ? <img style={{ width: 300 }} src={picture} alt="card" /> : null}
+      {picture ? (
+        <img style={{ width: 300 }} src={picture || defaultIcon} alt="card" />
+      ) : null}
       <h6>{createdAt}</h6>
       <div onClick={toggleLike}>
         <h6
