@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import CardListItem from "../CardListItem/CardListItem";
+
 const CardsList = () => {
   const cards = useSelector((state) => state.cardsReducer.cards);
   const navigator = useNavigate();
@@ -10,13 +12,11 @@ const CardsList = () => {
   };
 
   return (
-    <ul>
+    <div>
       {cards.map((card) => (
-        <li key={card._id} onClick={() => openCard(card._id)}>
-          {card.title}
-        </li>
+        <CardListItem data={card} key={Math.random} click={openCard} />
       ))}
-    </ul>
+    </div>
   );
 };
 

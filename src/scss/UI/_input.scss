@@ -1,16 +1,42 @@
 @import "../colors";
 @import "../mixins";
 
-input,
-select {
+input {
   font-size: 16px;
   color: $font-ui-light;
   background-color: $border-light;
+  border: solid $border-light thin;
   @include ui-border;
 }
 
 input::placeholder {
   color: $placeholder-font-light;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input:focus,
+select:focus {
+  border: solid white thin;
+}
+
+select {
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  align-self: flex-start;
+  width: 70px;
+  font-size: 16px;
+  color: $font-ui-light;
+  border-radius: 8px;
+  border: solid $border-light thin;
+  background-color: $border-light;
 }
 
 @media (max-width: 600px) {
