@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { updateCard } from "../../redux/action_creators/cards";
 import { v4 } from "uuid";
 
+import styles from "../../scss/components/_comments.module.scss";
+
 const CommentForm = ({ user, createComment }) => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -34,7 +36,7 @@ const CommentForm = ({ user, createComment }) => {
   };
 
   return (
-    <form onSubmit={(e) => submitComment(e)}>
+    <form className={styles.form} onSubmit={(e) => submitComment(e)}>
       <input
         type="text"
         value={comment}

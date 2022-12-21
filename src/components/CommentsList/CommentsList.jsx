@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import CommentForm from "../CommentForm/CommentForm";
 import { updateCard } from "../../redux/action_creators/cards";
+import styles from "../../scss/components/_comments.module.scss";
 
 const CommentsList = ({ auth, user, list, setList }) => {
   const dispatch = useDispatch();
@@ -32,17 +33,24 @@ const CommentsList = ({ auth, user, list, setList }) => {
   };
 
   return (
-    <div>
-      {list.map((comment) => (
-        <div
-          key={Math.random()}
-          id={comment.commentId}
-          onClick={(e) => removeComment(e, comment.author)}
-        >
-          <h3>{comment.author}</h3>
-          <h4>{comment.comment}</h4>
-        </div>
-      ))}
+    <div className={styles.container}>
+      <div className={styles.comments}>
+        {list.length > 0
+          ? list.map((comment) => (
+              <div
+                className={styles.item}
+                key={Math.random()}
+                id={comment.commentId}
+                onClick={(e) => removeComment(e, comment.author)}
+              >
+                <h3 className={styles.author}>
+                  {comment.author} комментирует:
+                </h3>
+                <h4 className={styles.text}>{comment.comment}</h4>
+              </div>
+            ))
+          : "Никто не прокомментировал пожелание..."}
+      </div>
       {auth ? <CommentForm user={user} createComment={setList} /> : null}
     </div>
   );

@@ -38,7 +38,7 @@ const Card = () => {
         <CardItem user={user} data={card} />
       )}
       {loggedIn && user.user.name === card.author ? (
-        <button onClick={toggleEdit}>
+        <button onClick={toggleEdit} className={styles.edit}>
           {editing ? "Отменить редактирование" : "Редактировать"}
         </button>
       ) : null}

@@ -56,25 +56,31 @@
 
 .cardItem {
   margin: 10px auto;
-  width: 90vw;
+  width: 1000px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-shrink: content;
-  background-color: rgba(68, 143, 53, 0.281);
-  border-radius: 20px;
 
   .photoBlock {
     margin: 20px;
+    padding: 10px;
+    border: solid rgb(128, 127, 127) thin;
+    border-radius: 5px;
     @include column-position;
 
     h2 {
+      width: 100%;
       margin: 5px;
       align-self: flex-start;
     }
     h3 {
       margin: 10px;
     }
+    h6 {
+      color: rgb(146, 146, 146);
+    }
+
     img {
       width: 400px;
       border-radius: 20px;
@@ -85,31 +91,38 @@
     margin: 20px;
     @include column-position;
 
-    .likes {
-      margin: 10px;
-      width: 35px;
-      cursor: pointer;
-      align-self: flex-end;
-      @include row-position;
+    .cardContent {
+      padding: 10px;
+      border: solid rgb(128, 127, 127) thin;
+      border-radius: 5px;
+      @include column-position;
 
-      &:hover {
-        .like {
-          opacity: 0.5;
+      .likes {
+        margin: 10px;
+        width: 35px;
+        cursor: pointer;
+        align-self: flex-end;
+        @include row-position;
+
+        &:hover {
+          .like {
+            opacity: 0.5;
+          }
         }
       }
-    }
 
-    .likes_active {
-      .like {
-        fill: rgba(255, 0, 0, 0.664);
+      .likes_active {
+        .like {
+          fill: rgba(255, 0, 0, 0.664);
+        }
       }
-    }
 
-    .text {
-      margin: 20px;
-      width: 400px;
-      text-align: left;
-      overflow-wrap: break-word;
+      .text {
+        margin: 20px;
+        width: 400px;
+        text-align: left;
+        overflow-wrap: break-word;
+      }
     }
   }
 }
@@ -117,27 +130,51 @@
 @media (max-width: 1050px) {
   .cardItem {
     margin: 15px auto;
-    width: auto;
+    width: 500px;
     @include column-position;
 
     .photoBlock {
-      width: 90vw;
-      margin: 5px;
+      width: 460px;
+      padding: 15px;
       @media (max-width: 700px) {
         img {
           width: 300px;
         }
       }
     }
+
     .infoBlock {
-      width: 90vw;
+      width: 400px;
       margin: 5px;
-      .likes {
-        align-self: center;
+      .cardContent {
+        margin: 10px 0;
+        .likes {
+          align-self: center;
+        }
       }
-      .text {
-        margin: 5px;
-        width: auto;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .cardItem {
+    width: 350px;
+    @include column-position;
+
+    .photoBlock {
+      width: 320px;
+    }
+
+    .infoBlock {
+      width: 320px;
+      margin: 5px;
+      .cardContent {
+        .text {
+          margin: 10px 0;
+          width: 300px;
+          text-align: left;
+          overflow-wrap: break-word;
+        }
       }
     }
   }
