@@ -22,7 +22,7 @@ const CommentsList = ({ auth, user, list, setList }) => {
 
     if (user.name === author) {
       const updatedComments = card.comments.filter(
-        (comment) => comment.commentId !== e.target.id
+        (comment) => comment.commentId !== e.currentTarget.id
       );
       setList(updatedComments);
       dispatch(
@@ -51,7 +51,10 @@ const CommentsList = ({ auth, user, list, setList }) => {
                   <h4 className={styles.text}>{comment.comment}</h4>
                 </div>
                 {comment.author === user?.name ? (
-                  <div onClick={(e) => removeComment(e, comment.author)}>
+                  <div
+                    onClick={(e) => removeComment(e, comment.author)}
+                    id={comment.commentId}
+                  >
                     <Close className={styles.deleteBtn} />
                   </div>
                 ) : null}

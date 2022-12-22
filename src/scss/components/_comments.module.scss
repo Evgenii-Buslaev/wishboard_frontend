@@ -19,6 +19,17 @@
     max-height: 300px;
     overflow-y: scroll;
 
+    &::-webkit-scrollbar {
+      width: 8px;
+      border-radius: 5px;
+      background-color: rgb(128, 127, 127);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-color: rgb(216, 216, 216);
+    }
+
     .item {
       margin: 5px 0;
       padding: 10px 0;
@@ -36,11 +47,16 @@
           color: rgb(138, 138, 138);
           font-size: 12px;
         }
+
+        .text {
+          text-align: start;
+        }
       }
 
       .deleteBtn {
+        margin: 15px 0 0;
         width: 10px;
-        align-self: flex-end;
+        justify-self: flex-end;
         cursor: pointer;
 
         &:hover {
