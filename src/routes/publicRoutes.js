@@ -32,7 +32,7 @@ export const publicRoutes = [
   {
     path: "/register",
     title: "Зарегистрироваться",
-    element: <Register />,
+    element: <Register actionName="register" />,
     nav: true,
   },
 ];

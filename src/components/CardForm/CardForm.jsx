@@ -6,12 +6,16 @@ import { storage } from "../../firebase";
 
 import styles from "../../scss/components/_cardform.module.scss";
 
-const CardForm = (action) => {
+const CardForm = ({ action }) => {
   const [fileProgress, setFileProgress] = useState(0);
   const { title, setTitle, text, setText, setPicture, author, submit } =
     useCard(action);
 
   const actionText = action === "create" ? "Создать" : "Сохранить";
+  const fileText =
+    action === "create"
+      ? "Если Вы не загрузите картинку, к Вашему пожеланию будет применена стандартная."
+      : "Если не хотите менять картинку, оставьте это поле пустым.";
 
   const fileHandler = (e) => {
     e.preventDefault();
@@ -44,10 +48,7 @@ const CardForm = (action) => {
       <form onSubmit={fileHandler} className={styles.fileForm}>
         <input type="file" accept=".jpg,.jpeg,.png" />
         <meter min="0" max="100" value={fileProgress}></meter>
-        <p>
-          Если Вы не загрузите картинку, к Вашему пожеланию будет применена
-          стандартная.
-        </p>
+        <p>{fileText}</p>
         <button type="submit">Загрузить файл</button>
       </form>
       <form onSubmit={(e) => submit(e)} className={styles.contentForm}>

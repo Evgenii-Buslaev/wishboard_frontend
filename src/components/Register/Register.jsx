@@ -5,7 +5,7 @@ import usePopup from "../../hooks/usePopup";
 import close from "../../assets/icons/close.svg";
 import styles from "../../scss/components/_modal.module.scss";
 
-const Register = () => {
+const Register = ({ actionName, data }) => {
   const {
     name,
     password,
@@ -17,7 +17,7 @@ const Register = () => {
     setAge,
     setSex,
     submit,
-  } = useProfile("register");
+  } = useProfile(actionName, data);
 
   const closePopup = usePopup();
 

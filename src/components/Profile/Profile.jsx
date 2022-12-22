@@ -3,8 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Register from "../Register/Register";
 import Preloader from "../Preloader/Preloader";
-import useProfile from "../../hooks/useProfile";
 import { deleteProfile, logout } from "../../redux/action_creators/user";
+
+import male from "../../assets/icons/male.svg";
+import female from "../../assets/icons/female.svg";
+import styles from "../../scss/components/_profile.module.scss";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -13,32 +16,51 @@ const Profile = () => {
   const user = useSelector((state) => state.userReducer.user);
   const preloader = useSelector((state) => state.appReducer.loading);
 
-  const userData = useProfile("update", user);
-
   const logoutFromAccout = () => dispatch(logout());
-  const deleteUser = () => dispatch(deleteProfile(user));
+  const deleteUser = () => {
+    const confirmation = confirm(
+      "Вы уверены, что хотите удалить аккаунт? Это действие нельзя отменить."
+    );
+    if (confirmation) {
+      dispatch(deleteProfile(user));
+      alert("Аккаунт удален.");
+      return;
+    }
+  };
+
+  if (opennedEditor) {
+    return <Register actionName="edit" data={user} />;
+  }
 
   return (
     <div>
       {preloader ? (
         <Preloader />
       ) : (
-        <>
-          <h3>{`Здравствуйте, ${user.name}`}</h3>
-          {opennedEditor ? <Register /> : null}
-          <button
-            type="button"
-            onClick={() => setOpennedEditor((prevState) => !prevState)}
-          >
-            {opennedEditor ? "Закрыть форму" : "Редактировать профиль"}
-          </button>
-          <button type="button" onClick={logoutFromAccout}>
-            Выйти
-          </button>
-          <button type="button" onClick={deleteUser}>
-            Удалить аккаунт
-          </button>
-        </>
+        <div className={styles.container}>
+          <div>
+            <img src={user.sex === "male" ? male : female} alt="avatar" />
+            <h3>{user.name}</h3>
+          </div>
+          <div className={styles.options}>
+            <button
+              type="button"
+              onClick={() => setOpennedEditor((prevState) => !prevState)}
+            >
+              Редактировать профиль
+            </button>
+            <button type="button" onClick={logoutFromAccout}>
+              Выйти
+            </button>
+            <button
+              type="button"
+              onClick={deleteUser}
+              className={styles.deleteBtn}
+            >
+              Удалить аккаунт
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

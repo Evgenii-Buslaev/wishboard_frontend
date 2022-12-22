@@ -11,16 +11,22 @@ const CardsList = () => {
 
   const navigator = useNavigate();
 
+  const navigate = () => {
+    if (user.loggedIn) {
+      navigator("/post_card");
+    } else {
+      navigator("/login");
+    }
+  };
+
   return (
     <div className={styles.container}>
-      {user.loggedIn ? (
-        <img
-          src={add}
-          alt="create card"
-          className={styles.add}
-          onClick={() => navigator("/post_card")}
-        />
-      ) : null}
+      <img
+        src={add}
+        alt="create card"
+        className={styles.add}
+        onClick={navigate}
+      />
       <div className={styles.list}>
         {cards.map((card) => (
           <CardListItem data={card} key={Math.random()} />
