@@ -1,0 +1,127 @@
+@import "../colors";
+@import "../mixins";
+
+.container {
+  margin: auto;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .contentForm,
+  .fileForm {
+    width: 360px;
+    margin: 20px;
+    padding: 10px;
+    border: solid rgb(128, 127, 127) thin;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.397);
+    @include column-position;
+  }
+
+  .fileForm {
+    height: 300px;
+    justify-content: space-evenly;
+
+    input {
+      font-family: "Roboto", "sans-serif";
+      font-size: 12px;
+
+      &::-webkit-file-upload-button {
+        padding: 10px;
+        color: $font-ui-light;
+        background-color: $background-btn-light;
+        transition-property: opacity;
+        transition-duration: 0.5s;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      &::-webkit-file-upload-button:hover {
+        opacity: 0.7;
+      }
+    }
+
+    p {
+      text-align: start;
+      padding: 0 15px;
+      color: $font-ui-light;
+    }
+  }
+
+  .contentForm {
+    @include column-position;
+
+    div {
+      width: 340px;
+      @include row-position;
+      justify-content: flex-end;
+    }
+
+    label {
+      color: $font-ui-light;
+    }
+
+    input,
+    label,
+    textarea {
+      margin: 10px 5px;
+    }
+
+    textarea {
+      padding: 10px 20px;
+      width: 240px;
+      height: 100px;
+      font-family: "Roboto", "sans-serif";
+      font-size: 14px;
+      color: $font-ui-light;
+      border-radius: 8px;
+      border: solid $border-light thin;
+      background-color: $border-light;
+
+      &::placeholder {
+        color: $placeholder-font-light;
+      }
+
+      &::-webkit-scrollbar {
+        @include scrollbar;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @include thumb;
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 350px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .contentForm,
+    .fileForm {
+      width: 330px;
+      margin: 10px;
+
+      div {
+        width: 320px;
+      }
+
+      label,
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .contentForm {
+      input,
+      textarea {
+        width: 225px;
+      }
+    }
+  }
+}

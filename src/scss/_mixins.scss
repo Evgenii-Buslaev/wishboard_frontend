@@ -4,6 +4,17 @@
   padding: 15px 20px;
 }
 
+@mixin scrollbar {
+  width: 8px;
+  border-radius: 5px;
+  background-color: rgb(128, 127, 127);
+}
+
+@mixin thumb {
+  border-radius: 20px;
+  background-color: rgb(216, 216, 216);
+}
+
 // positions
 @mixin row-position {
   display: flex;

@@ -4,6 +4,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import useCard from "../../hooks/useCard";
 import { storage } from "../../firebase";
 
+import styles from "../../scss/components/_cardform.module.scss";
+
 const CardForm = (action) => {
   const [fileProgress, setFileProgress] = useState(0);
   const { title, setTitle, text, setText, setPicture, author, submit } =
@@ -38,34 +40,44 @@ const CardForm = (action) => {
   };
 
   return (
-    <>
-      <form onSubmit={fileHandler}>
+    <div className={styles.container}>
+      <form onSubmit={fileHandler} className={styles.fileForm}>
         <input type="file" accept=".jpg,.jpeg,.png" />
-        <h6>Загружено {fileProgress} %</h6>
+        <meter min="0" max="100" value={fileProgress}></meter>
+        <p>
+          Если Вы не загрузите картинку, к Вашему пожеланию будет применена
+          стандартная.
+        </p>
         <button type="submit">Загрузить файл</button>
       </form>
-      <form onSubmit={(e) => submit(e)}>
-        <label htmlFor="author">Автор:</label>
-        <input id="author" type="text" value={author} disabled />
-        <label htmlFor="title">Заголовок:</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Введите заголовок..."
-        />
-        <label htmlFor="content">Текст пожелания:</label>
-        <textarea
-          id="content"
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Введите текст пожелния..."
-        />
+      <form onSubmit={(e) => submit(e)} className={styles.contentForm}>
+        <div>
+          <label htmlFor="author">Автор:</label>
+          <input id="author" type="text" value={author} disabled />
+        </div>
+        <div>
+          <label htmlFor="title">Заголовок:</label>
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Введите заголовок..."
+          />
+        </div>
+        <div>
+          <label htmlFor="content">Текст:</label>
+          <textarea
+            id="content"
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Введите текст пожелния..."
+          />
+        </div>
         <button type="submit">{actionText}</button>
       </form>
-    </>
+    </div>
   );
 };
 
