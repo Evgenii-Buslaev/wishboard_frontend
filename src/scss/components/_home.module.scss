@@ -1,0 +1,8 @@
+@import "../colors";
+@import "../mixins";
+
+.container {
+  width: 100vw;
+  height: 90vh;
+  @include column-position;
+}
