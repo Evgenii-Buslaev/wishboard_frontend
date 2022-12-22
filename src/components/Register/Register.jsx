@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useProfile from "../../hooks/useProfile";
 import usePopup from "../../hooks/usePopup";
 
@@ -53,6 +54,12 @@ const Register = () => {
           <option value="male">Муж.</option>
           <option value="female">Жен.</option>
         </select>
+        {action === "register" ? (
+          <>
+            <p>Есть аккаунт?</p>
+            <Link to="/login">Войдите.</Link>
+          </>
+        ) : null}
         <button type="submit">
           {action === "register" ? "Зарегистрироваться" : "Обновить профиль"}
         </button>

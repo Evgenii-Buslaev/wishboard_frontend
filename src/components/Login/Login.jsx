@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 import usePopup from "../../hooks/usePopup";
 
@@ -31,6 +32,8 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <p>Нет аккаунта?</p>
+          <Link to="/register">Зарегистрируйтесь.</Link>
           <button type="submit">Войти</button>
         </form>
       )}

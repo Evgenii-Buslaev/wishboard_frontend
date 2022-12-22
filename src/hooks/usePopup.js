@@ -8,7 +8,8 @@ const usePopup = () => {
       e.target.tagName !== "FORM" &&
       e.target.tagName !== "INPUT" &&
       e.target.tagName !== "BUTTON" &&
-      e.target.tagName !== "SELECT"
+      e.target.tagName !== "SELECT" &&
+      e.target.tagName !== "A"
     )
       navigator("/");
   };
