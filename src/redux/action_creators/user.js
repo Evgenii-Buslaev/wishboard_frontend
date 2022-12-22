@@ -8,22 +8,12 @@ import {
   APP_LOADING,
 } from "../actions";
 
-const loadReq = () => {
-  return async (dispatch) => {
-    dispatch({ type: APP_LOADING, data: true });
-  };
-};
-
-const appLoaded = () => {
-  return async (dispatch) => {
-    dispatch({ type: APP_LOADING, data: false });
-  };
-};
+import { loadReq, appLoaded } from "./app";
 
 const login = (user_data) => {
   return async (dispatch) => {
-    const user = await UserService.login(user_data);
     dispatch(loadReq());
+    const user = await UserService.login(user_data);
     if (user) {
       if (user.name) {
         dispatch({ type: LOG_IN, data: user });

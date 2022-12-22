@@ -27,11 +27,13 @@ const CardItem = ({ data }) => {
           {author} <p>создал(а) пожелание {getDate(createdAt)}</p>
         </h2>
         <h3>{title}</h3>
-        <img
-          className={styles.picture}
-          src={picture || defaultIcon}
-          alt="card"
-        />
+        <a href={picture} target="_blank">
+          <img
+            className={styles.picture}
+            src={picture || defaultIcon}
+            alt="card"
+          />
+        </a>
       </div>
       <div className={styles.infoBlock}>
         <div className={styles.cardContent}>

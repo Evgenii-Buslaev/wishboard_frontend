@@ -7,6 +7,8 @@ import {
 } from "../actions";
 import CardService from "../../api/CardService";
 
+import { loadReq, appLoaded } from "./app";
+
 const fetchCards = () => {
   return async (dispatch) => {
     const cards = await CardService.getCards();
