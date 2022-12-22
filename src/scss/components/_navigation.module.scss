@@ -5,14 +5,12 @@
   width: 100vw;
   height: 80px;
   z-index: 3;
-  background-color: $background-nav;
   @include evenly-position;
 
   a {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
-    color: $nav-item;
   }
 
   a:hover {
@@ -45,17 +43,14 @@
 
 .search {
   width: 60vw;
-  background-color: rgb(182, 182, 182);
+  border: solid rgba(0, 0, 0, 0.658) thin;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .authLinks {
   width: 350px;
   height: 100%;
   @include evenly-position;
-
-  h4 {
-    color: $nav-item;
-  }
 
   a {
     padding: 10px 20px;
