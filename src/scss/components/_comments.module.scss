@@ -23,14 +23,29 @@
       margin: 5px 0;
       padding: 10px 0;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: solid rgb(128, 127, 127) thin;
 
-      .author {
-        color: rgb(138, 138, 138);
-        font-size: 12px;
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .author {
+          color: rgb(138, 138, 138);
+          font-size: 12px;
+        }
+      }
+
+      .deleteBtn {
+        width: 10px;
+        align-self: flex-end;
+        cursor: pointer;
+
+        &:hover {
+          fill: red;
+        }
       }
     }
   }

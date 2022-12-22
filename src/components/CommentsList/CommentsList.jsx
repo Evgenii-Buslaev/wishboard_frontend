@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 import CommentForm from "../CommentForm/CommentForm";
 import { updateCard } from "../../redux/action_creators/cards";
+
+import { ReactComponent as Close } from "../../assets/icons/close.svg";
 import styles from "../../scss/components/_comments.module.scss";
 
 const CommentsList = ({ auth, user, list, setList }) => {
@@ -41,12 +43,18 @@ const CommentsList = ({ auth, user, list, setList }) => {
                 className={styles.item}
                 key={Math.random()}
                 id={comment.commentId}
-                onClick={(e) => removeComment(e, comment.author)}
               >
-                <h3 className={styles.author}>
-                  {comment.author} комментирует:
-                </h3>
-                <h4 className={styles.text}>{comment.comment}</h4>
+                <div className={styles.content}>
+                  <h3 className={styles.author}>
+                    {comment.author} комментирует:
+                  </h3>
+                  <h4 className={styles.text}>{comment.comment}</h4>
+                </div>
+                {comment.author === user?.name ? (
+                  <div onClick={(e) => removeComment(e, comment.author)}>
+                    <Close className={styles.deleteBtn} />
+                  </div>
+                ) : null}
               </div>
             ))
           : "Никто не прокомментировал пожелание..."}

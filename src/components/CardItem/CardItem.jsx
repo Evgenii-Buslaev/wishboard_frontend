@@ -24,7 +24,7 @@ const CardItem = ({ data }) => {
     <div className={styles.cardItem}>
       <div className={styles.photoBlock}>
         <h2>
-          {author} <h6>создал(а) пожелание {getDate(createdAt)}</h6>
+          {author} <p>создал(а) пожелание {getDate(createdAt)}</p>
         </h2>
         <h3>{title}</h3>
         <img
