@@ -53,6 +53,10 @@
   height: 100%;
   @include evenly-position;
 
+  h4 {
+    color: $nav-item;
+  }
+
   a {
     padding: 10px 20px;
   }

@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navigation auth={user.loggedIn} />
+      <Navigation auth={user} />
       {app.loading ? <Preloader /> : <AppRouter auth={user.loggedIn} />}
     </div>
   );

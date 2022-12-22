@@ -19,10 +19,13 @@ const Navigation = ({ auth }) => {
         className={styles.search}
         placeholder="Введите ключевые слова..."
       />
-      {auth ? (
-        <Link to="/profile">
-          <UserBtn className={styles.nav_btn} />
-        </Link>
+      {auth.loggedIn ? (
+        <div className={styles.authLinks}>
+          <Link to="/profile">
+            <UserBtn className={styles.nav_btn} />
+          </Link>
+          <h4>{auth.user.name.split(" ")[0]}</h4>
+        </div>
       ) : (
         <div className={styles.authLinks}>
           <Link to="/login">Войти</Link>
