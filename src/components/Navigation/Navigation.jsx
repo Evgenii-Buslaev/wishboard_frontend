@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import Filter from "../Filter/Filter";
+
 import { ReactComponent as HomeBtn } from "../../assets/icons/home.svg";
 import { ReactComponent as BoardBtn } from "../../assets/icons/board.svg";
 import { ReactComponent as UserBtn } from "../../assets/icons/user.svg";
@@ -14,11 +16,7 @@ const Navigation = ({ auth }) => {
       <Link to="/cards">
         <BoardBtn className={styles.nav_btn} />
       </Link>
-      <input
-        type="text"
-        className={styles.search}
-        placeholder="Введите ключевые слова..."
-      />
+      <Filter />
       {auth.loggedIn ? (
         <div className={styles.authLinks}>
           <Link to="/profile">

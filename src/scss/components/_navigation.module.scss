@@ -5,6 +5,7 @@
   width: 100vw;
   height: 80px;
   z-index: 3;
+  border-bottom: solid black thin;
   @include evenly-position;
 
   a {
