@@ -18,14 +18,14 @@ This is a Frontend-part of my new application for creating wishes cards.
 
 2. CRUD-operations with wishing cards for authorized users. Guests can only read existing cards and its information.
 
-Authorized users can:
+    Authorized users can:
 
-- Create a card;
-- Upload an image;
-- Like other cards;
-- Comment other cards;
+    - Create a card;
+    - Upload an image;
+    - Like other cards;
+    - Comment other cards;
 
-- #### Architecture of Application
+* #### Architecture of Application
 
   This application has been built according to functional programming paradigm by using functional components.
 
