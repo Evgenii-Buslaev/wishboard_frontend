@@ -19,14 +19,20 @@ const cardsReducer = (state = initialState, action) => {
     }
 
     case CREATE_CARD: {
-      return { ...state, cards: [...state.cards, action.data] };
+      return {
+        ...state,
+        cards: [...state.cards, action.data],
+      };
     }
 
     case UPDATE_CARD: {
       const otherCards = state.cards.filter(
         (elem) => elem._id !== action.data._id
       );
-      return { ...state, cards: [...otherCards, action.data] };
+      return {
+        ...state,
+        cards: [...otherCards, action.data],
+      };
     }
 
     case DELETE_CARD: {
@@ -47,7 +53,7 @@ const cardsReducer = (state = initialState, action) => {
     case CLEAR_FILTER: {
       return {
         ...state,
-        filtered: [],
+        filtered: [...state.cards],
       };
     }
 

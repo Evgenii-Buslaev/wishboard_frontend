@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { sortList } from "../../handlers/sortList";
 
 import add from "../../assets/icons/add.svg";
 import CardListItem from "../CardListItem/CardListItem";
@@ -9,19 +10,13 @@ import styles from "../../scss/components/_cards.module.scss";
 
 const CardsList = () => {
   const user = useSelector((state) => state.userReducer);
-  const cards = useSelector((state) => state.cardsReducer.cards);
+  const cardsStore = useSelector((state) => state.cardsReducer);
 
   const [sort, setSort] = useState("date");
 
   const sortedList = useMemo(() => {
-    if (sort === "date") {
-      return cards.sort((a, b) => {
-        return Date.parse(b.createdAt) - Date.parse(a.createdAt);
-      });
-    } else {
-      return cards.sort((a, b) => (a.title > b.title ? 1 : -1));
-    }
-  }, [sort, cards]);
+    return sortList(cardsStore.cards, sort);
+  }, [sort, cardsStore.cards]);
 
   const navigator = useNavigate();
   const navigate = () => {
