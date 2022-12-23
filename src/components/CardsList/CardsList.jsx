@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,18 @@ const CardsList = () => {
   const cards = useSelector((state) => state.cardsReducer.cards);
 
   const [sort, setSort] = useState("date");
-  const [sortedList, setSortedList] = useState([]);
+
+  const sortedList = useMemo(() => {
+    if (sort === "date") {
+      return cards.sort((a, b) => {
+        return Date.parse(b.createdAt) - Date.parse(a.createdAt);
+      });
+    } else {
+      return cards.sort((a, b) => (a.title > b.title ? 1 : -1));
+    }
+  }, [sort, cards]);
 
   const navigator = useNavigate();
-
   const navigate = () => {
     if (user.loggedIn) {
       navigator("/post_card");
@@ -23,26 +31,6 @@ const CardsList = () => {
       navigator("/login");
     }
   };
-
-  const sortCards = () => {
-    if (sort === "date") {
-      setSortedList(
-        cards.sort((a, b) => {
-          return Date.parse(a.createdAt) - Date.parse(b.createdAt);
-        })
-      );
-    } else {
-      return setSortedList(cards.sort((a, b) => (a.title > b.title ? 1 : -1)));
-    }
-  };
-
-  useEffect(() => {
-    setSortedList(cards);
-  }, []);
-
-  useEffect(() => {
-    sortCards();
-  }, [sort]);
 
   return (
     <div className={styles.container}>
