@@ -4,10 +4,12 @@ import {
   UPDATE_CARD,
   DELETE_CARD,
   ERROR_DISPLAY_ON,
+  FILTER_CARDS,
+  CLEAR_FILTER,
 } from "../actions";
 import CardService from "../../api/CardService";
 
-import { loadReq, appLoaded } from "./app";
+/* import { loadReq, appLoaded } from "./app"; */
 
 const fetchCards = () => {
   return async (dispatch) => {
@@ -50,4 +52,14 @@ const deleteCard = (card) => {
   };
 };
 
-export { fetchCards, createCard, updateCard, deleteCard };
+const filterCards = (query) => {
+  return (dispatch) => {
+    if (query) {
+      dispatch({ type: FILTER_CARDS, data: query });
+    } else {
+      dispatch({ type: CLEAR_FILTER });
+    }
+  };
+};
+
+export { fetchCards, createCard, updateCard, deleteCard, filterCards };

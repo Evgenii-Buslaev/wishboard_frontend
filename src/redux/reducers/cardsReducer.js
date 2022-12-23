@@ -1,7 +1,15 @@
-import { LOAD_CARDS, CREATE_CARD, UPDATE_CARD, DELETE_CARD } from "../actions";
+import {
+  LOAD_CARDS,
+  CREATE_CARD,
+  UPDATE_CARD,
+  DELETE_CARD,
+  FILTER_CARDS,
+  CLEAR_FILTER,
+} from "../actions";
 
 const initialState = {
   cards: [],
+  filtered: [],
 };
 
 const cardsReducer = (state = initialState, action) => {
@@ -24,6 +32,23 @@ const cardsReducer = (state = initialState, action) => {
     case DELETE_CARD: {
       const cards = state.cards.filter((elem) => elem._id !== action.data._id);
       return { ...state, cards: [...cards] };
+    }
+
+    case FILTER_CARDS: {
+      return {
+        ...state,
+        filtered: state.cards.filter(
+          (card) =>
+            card.title.includes(action.data) || card.text.includes(action.data)
+        ),
+      };
+    }
+
+    case CLEAR_FILTER: {
+      return {
+        ...state,
+        filtered: [],
+      };
     }
 
     default:

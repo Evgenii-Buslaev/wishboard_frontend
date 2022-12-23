@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+import useFilter from "../../hooks/useFilter";
 import styles from "../../scss/components/_navigation.module.scss";
 
 const Filter = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useFilter();
+
   return (
     <input
       type="text"
