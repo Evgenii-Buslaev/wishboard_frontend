@@ -15,8 +15,8 @@ const CardsList = () => {
   const [sort, setSort] = useState("date");
 
   const sortedList = useMemo(() => {
-    return sortList(cardsStore.cards, sort);
-  }, [sort, cardsStore.cards]);
+    return sortList(cardsStore.filtered, sort);
+  }, [sort, cardsStore.filtered]);
 
   const navigator = useNavigate();
   const navigate = () => {
@@ -44,9 +44,13 @@ const CardsList = () => {
         onClick={navigate}
       />
       <div className={styles.list}>
-        {sortedList.map((card) => (
-          <CardListItem data={card} key={Math.random()} />
-        ))}
+        {sortedList.length > 0 ? (
+          sortedList.map((card) => (
+            <CardListItem data={card} key={Math.random()} />
+          ))
+        ) : (
+          <h2>Нет карточек...</h2>
+        )}
       </div>
     </div>
   );
