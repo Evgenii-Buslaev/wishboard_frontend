@@ -19,11 +19,11 @@ const Card = () => {
   const user = useSelector((state) => state.userReducer);
   const cards = useSelector((state) => state.cardsReducer.cards);
 
-  const card = useMemo(
-    () => cards.find((card) => card._id === params.id),
-    // eslint-disable-next-line
-    []
-  );
+  const card = cards.find((card) => card._id === params.id);
+
+  if (!card) {
+    return;
+  }
 
   useEffect(() => {
     setLoggedIn(user.loggedIn);
