@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCard } from "../../redux/action_creators/cards";
@@ -13,7 +13,6 @@ const Card = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [cardComments, setCardComments] = useState([]);
 
   const params = useParams();
   const user = useSelector((state) => state.userReducer);
@@ -21,14 +20,9 @@ const Card = () => {
 
   const card = cards.find((card) => card._id === params.id);
 
-  if (!card) {
-    return;
-  }
-
   useEffect(() => {
     setLoggedIn(user.loggedIn);
-    setCardComments(card.comments);
-  }, [user.loggedIn, card.comments]);
+  }, [user.loggedIn]);
 
   const toggleEdit = () => {
     setEditing((prevState) => !prevState);
@@ -36,8 +30,12 @@ const Card = () => {
 
   const removeCard = () => {
     dispatch(deleteCard(card));
-    navigator("/cards");
+    setTimeout(() => navigator("/cards"), 500);
   };
+
+  if (!card) {
+    return;
+  }
 
   return (
     <div className={styles.cards}>

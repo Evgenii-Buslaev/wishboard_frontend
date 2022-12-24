@@ -10,7 +10,7 @@ import defaultIcon from "../../assets/icons/default.jpg";
 import styles from "../../scss/components/_card.module.scss";
 
 const CardItem = ({ data }) => {
-  const { author, title, text, picture, createdAt, likes, comments } = data;
+  const { author, title, text, picture, createdAt, comments } = data;
   const [likedByUser, cardLikes, toggleLike] = useLike(data);
   const [cardComments, setCardComments] = useState([]);
 
@@ -27,7 +27,7 @@ const CardItem = ({ data }) => {
           {author} <p>создал(а) пожелание {getDate(createdAt)}</p>
         </h2>
         <h3>{title}</h3>
-        <a href={picture} target="_blank">
+        <a href={picture} target="_blank" rel="noreferrer">
           <img
             className={styles.picture}
             src={picture || defaultIcon}

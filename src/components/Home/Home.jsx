@@ -32,6 +32,7 @@ const Home = () => {
           <a
             href="https://github.com/Evgenii-Buslaev/wishboard_frontend"
             target="_blank"
+            rel="noreferrer"
           >
             Исходный код приложения
           </a>
