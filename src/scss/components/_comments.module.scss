@@ -5,7 +5,9 @@
   margin: 20px 0;
   width: 460px;
   padding: 10px;
-  border: solid rgb(128, 127, 127) thin;
+  box-shadow: 0 0 10px 5px rgb(196, 196, 196);
+  background-color: rgba(205, 211, 197, 0.377);
+  /*   border: solid rgb(128, 127, 127) thin; */
   border-radius: 5px;
 
   @media (max-width: 600px) {
