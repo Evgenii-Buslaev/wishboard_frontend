@@ -9,7 +9,7 @@ import {
 } from "../actions";
 import CardService from "../../api/CardService";
 
-/* import { loadReq, appLoaded } from "./app"; */
+import { loadReq, appLoaded } from "./app";
 
 const fetchCards = () => {
   return async (dispatch) => {
@@ -44,10 +44,12 @@ const updateCard = (card) => {
 
 const deleteCard = (card) => {
   return async (dispatch) => {
+    dispatch(loadReq());
     const deletedCard = await CardService.removeCard(card);
     if (deletedCard) {
       dispatch({ type: DELETE_CARD, data: deletedCard });
     }
+    dispatch(appLoaded());
     return;
   };
 };
