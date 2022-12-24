@@ -38,8 +38,12 @@ const Profile = () => {
         <Preloader />
       ) : (
         <div className={styles.container}>
-          <div>
-            <img src={user.sex === "male" ? male : female} alt="avatar" />
+          <div className={styles.photo}>
+            <img
+              className={styles.avatar}
+              src={user.sex === "male" ? male : female}
+              alt="avatar"
+            />
             <h3>{user.name}</h3>
           </div>
           <div className={styles.options}>
