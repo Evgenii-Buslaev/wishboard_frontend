@@ -35,7 +35,12 @@ Authorized users can:
 
 - #### API
 
-To store user and cards data I used API: https://github.com/Evgenii-Buslaev/wishboard_backend - running backend server (MongoDB, Node.js, express.js).
+  To store user and cards data I used API: https://github.com/Evgenii-Buslaev/wishboard_backend - running backend server (MongoDB, Node.js, express.js).
+
+- #### Achievments
+
+  - experience of developing full-stack application;
+  - experience with async operations using redux store.
 
 ## Available Scripts
 
