@@ -29,9 +29,14 @@ const Home = () => {
               ставьте лайки.
             </li>
           </ul>
+          <p>
+            <strong>Предупреждение:</strong> все карточки и комментарии с
+            военно-политическим контентом будут удалены командой модераторов.
+          </p>
           <a
             href="https://github.com/Evgenii-Buslaev/wishboard_frontend"
             target="_blank"
+            rel="noreferrer"
           >
             Исходный код приложения
           </a>

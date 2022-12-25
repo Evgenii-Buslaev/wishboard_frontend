@@ -9,6 +9,7 @@ const useFilter = () => {
 
   useEffect(() => {
     dispatch(filterCards(query));
+    // eslint-disable-next-line
   }, [query]);
 
   return [query, setQuery];

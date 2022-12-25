@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <div className={styles.modal} onClick={(e) => closePopup(e)}>
       <form className={styles.form} onSubmit={(e) => submit(e)}>
-        <img src={close} alt="close" />
+        <img className={styles.closeBtn} src={close} alt="close" />
         <input
           type="text"
           placeholder="Имя пользователя"

@@ -34,7 +34,7 @@ class UserService {
       const user = await response.json();
       return user;
     } catch (e) {
-      console.log(e);
+      return e;
     }
   }
 

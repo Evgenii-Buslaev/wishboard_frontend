@@ -24,7 +24,12 @@ const Register = ({ actionName, data }) => {
   return (
     <div className={styles.modal} onClick={(e) => closePopup(e)}>
       <form onSubmit={(e) => submit(e)} className={styles.form}>
-        <img src={close} alt="close" onClick={(e) => closePopup(e)} />
+        <img
+          className={styles.closeBtn}
+          src={close}
+          alt="close"
+          onClick={(e) => closePopup(e)}
+        />
         <input
           type="text"
           placeholder="Имя пользователя"

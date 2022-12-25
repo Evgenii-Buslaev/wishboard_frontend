@@ -6,20 +6,35 @@
   padding: 10px 0;
   width: 400px;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   @media (max-width: 450px) {
-    & {
-      width: 350px;
-    }
+    width: 350px;
   }
 
-  a {
-    cursor: pointer;
+  .refs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0;
+    width: 400px;
 
-    &:hover {
-      fill: rgb(92, 25, 25);
+    a {
+      cursor: pointer;
+
+      &:hover {
+        fill: rgb(92, 25, 25);
+      }
+    }
+
+    @media (max-width: 450px) {
+      & {
+        margin-left: 0;
+        margin-right: 0;
+        width: 300px;
+      }
     }
   }
 }

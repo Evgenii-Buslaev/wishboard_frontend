@@ -15,13 +15,14 @@ const initialState = {
 const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CARDS: {
-      return { ...state, cards: action.data };
+      return { ...state, cards: action.data, filtered: action.data };
     }
 
     case CREATE_CARD: {
       return {
         ...state,
         cards: [...state.cards, action.data],
+        filtered: [...state.filtered, action.data],
       };
     }
 
@@ -29,9 +30,15 @@ const cardsReducer = (state = initialState, action) => {
       const otherCards = state.cards.filter(
         (elem) => elem._id !== action.data._id
       );
+
+      console.log(action.data);
       return {
         ...state,
         cards: [...otherCards, action.data],
+        filtered: [
+          ...state.filtered.filter((card) => card._id !== action.data._id),
+          action.data,
+        ],
       };
     }
 

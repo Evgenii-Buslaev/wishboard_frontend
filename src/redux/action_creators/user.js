@@ -5,7 +5,6 @@ import {
   CREATE_USER,
   UPDATE_USER,
   DELETE_USER,
-  APP_LOADING,
 } from "../actions";
 
 import { loadReq, appLoaded } from "./app";
@@ -36,9 +35,11 @@ const logout = () => {
 const register = (user) => {
   return async (dispatch) => {
     dispatch(loadReq());
-    const createdUser = await UserService.createUser(user);
-    if (createdUser) {
-      dispatch({ type: CREATE_USER, data: createdUser });
+    const response = await UserService.createUser(user);
+    if (response._id) {
+      dispatch({ type: CREATE_USER, data: response });
+    } else {
+      alert(response);
     }
     dispatch(appLoaded());
     return;

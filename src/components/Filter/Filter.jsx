@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import useFilter from "../../hooks/useFilter";
 import styles from "../../scss/components/_navigation.module.scss";
 
