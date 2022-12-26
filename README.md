@@ -18,14 +18,14 @@ This is a Frontend-part of my new application for creating wishes cards.
 
 2. CRUD-operations with wishing cards for authorized users. Guests can only read existing cards and its information.
 
-    Authorized users can:
+   Authorized users can:
 
-    - Create a card;
-    - Upload an image;
-    - Like other cards;
-    - Comment other cards;
+   - Create a card;
+   - Upload an image;
+   - Like other cards;
+   - Comment other cards;
 
-* #### Architecture of Application
+- #### Architecture of Application
 
   This application has been built according to functional programming paradigm by using functional components.
 
@@ -33,7 +33,7 @@ This is a Frontend-part of my new application for creating wishes cards.
   2. As a global state store I'm using redux and redux thunk for async opearions.
   3. To store file I'm using firebase store. This store returns a downloading link after file uploading, then I save this link wish card object into db.
 
-- #### API
+* #### API
 
   To store user and cards data I used API: https://github.com/Evgenii-Buslaev/wishboard_backend - running backend server (MongoDB, Node.js, express.js).
 
@@ -41,6 +41,10 @@ This is a Frontend-part of my new application for creating wishes cards.
 
   - experience of developing full-stack application;
   - experience with async operations using redux store.
+
+* #### Deployment
+
+  Try using this app by the following link: https://evgenii-buslaev.github.io/wishboard_frontend/.
 
 ## Available Scripts
 
