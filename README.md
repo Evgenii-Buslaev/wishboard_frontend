@@ -23,6 +23,7 @@ This is a Frontend-part of my new application for creating wishes cards.
    - Create a card;
    - Upload an image;
    - Like other cards;
+   - Like comments;
    - Comment other cards;
 
 - #### Architecture of Application
