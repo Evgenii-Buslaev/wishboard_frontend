@@ -8,11 +8,17 @@ import { ReactComponent as Like } from "../../assets/icons/like.svg";
 import { getDate } from "../../handlers/getDate";
 import defaultIcon from "../../assets/icons/default.jpg";
 import styles from "../../scss/components/_card.module.scss";
+import Likes from "../Likes/Likes";
 
 const CardItem = ({ data }) => {
-  const { author, title, text, picture, createdAt, comments } = data;
+  const { author, title, text, picture, createdAt, comments, likes } = data;
   const [likedByUser, cardLikes, toggleLike] = useLike(data);
   const [cardComments, setCardComments] = useState([]);
+  const [likesVisible, setLikesVisible] = useState(false);
+
+  const checkLikers = () => {
+    setLikesVisible((prevState) => !prevState);
+  };
 
   const user = useSelector((state) => state.userReducer);
 
@@ -47,7 +53,10 @@ const CardItem = ({ data }) => {
             }
           >
             <Like className={styles.like} />
-            <h4>{cardLikes}</h4>
+            <Likes likes={likes} visible={likesVisible} />
+            <h4 onMouseEnter={checkLikers} onMouseLeave={checkLikers}>
+              {cardLikes}
+            </h4>
           </div>
         </div>
         <CommentsList
