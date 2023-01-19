@@ -1,0 +1,20 @@
+.list {
+  position: absolute;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px;
+  width: auto;
+  height: auto;
+  box-shadow: 0 0 10px 5px rgb(196, 196, 196);
+  background-color: rgba(205, 211, 197, 0.377);
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}

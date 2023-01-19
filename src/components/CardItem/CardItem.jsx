@@ -45,6 +45,9 @@ const CardItem = ({ data }) => {
         <div className={styles.cardContent}>
           <p className={styles.text}>{text}</p>
           <div
+            style={{
+              position: "relative",
+            }}
             onClick={toggleLike}
             className={
               likedByUser
