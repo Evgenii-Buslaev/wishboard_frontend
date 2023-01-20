@@ -55,7 +55,11 @@ const CardItem = ({ data }) => {
                 : styles.likes
             }
           >
-            <Like className={styles.like} />
+            <Like
+              className={styles.like}
+              onMouseEnter={checkLikers}
+              onMouseLeave={checkLikers}
+            />
             <Likes likes={likes} visible={likesVisible} />
             <h4 onMouseEnter={checkLikers} onMouseLeave={checkLikers}>
               {cardLikes}
