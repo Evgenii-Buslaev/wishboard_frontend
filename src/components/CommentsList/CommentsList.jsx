@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import CommentForm from "../CommentForm/CommentForm";
+import CommentItem from "../CommentItem/CommentItem";
 import { updateCard } from "../../redux/action_creators/cards";
 
-import { ReactComponent as Close } from "../../assets/icons/close.svg";
 import styles from "../../scss/components/_comments.module.scss";
 
 const CommentsList = ({ auth, user, list, setList }) => {
@@ -38,27 +38,8 @@ const CommentsList = ({ auth, user, list, setList }) => {
     <div className={styles.container}>
       <div className={styles.comments}>
         {list.length > 0
-          ? list.map((comment) => (
-              <div
-                className={styles.item}
-                key={Math.random()}
-                id={comment.commentId}
-              >
-                <div className={styles.content}>
-                  <h3 className={styles.author}>
-                    {comment.author} комментирует:
-                  </h3>
-                  <h4 className={styles.text}>{comment.comment}</h4>
-                </div>
-                {comment.author === user?.name ? (
-                  <div
-                    onClick={(e) => removeComment(e, comment.author)}
-                    id={comment.commentId}
-                  >
-                    <Close className={styles.deleteBtn} />
-                  </div>
-                ) : null}
-              </div>
+          ? list.map((data) => (
+              <CommentItem comment={data} remove={removeComment} user={user} />
             ))
           : "Никто не прокомментировал пожелание..."}
       </div>
