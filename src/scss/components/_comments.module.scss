@@ -52,23 +52,36 @@
         }
         .reactions {
           margin-top: 8px;
-          width: 50px;
+          width: auto;
           height: auto;
           display: flex;
           justify-content: space-between;
           align-items: center;
 
-          .thumb {
-            fill: gray;
-            cursor: pointer;
+          .reaction__cont {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-right: 10px;
 
-            &:hover {
-              fill: black;
+            .thumb {
+              fill: gray;
+              cursor: pointer;
+
+              &:hover {
+                fill: black;
+              }
             }
-          }
 
-          .thumb_down {
-            transform: rotate(180deg);
+            .thumb_down {
+              transform: rotate(180deg);
+            }
+
+            p {
+              padding: 0 5px;
+              font-size: 14px;
+              color: gray;
+            }
           }
         }
       }
