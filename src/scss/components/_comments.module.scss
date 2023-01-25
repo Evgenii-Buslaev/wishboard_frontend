@@ -42,13 +42,34 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+
         .author {
           color: rgb(138, 138, 138);
           font-size: 12px;
         }
-
         .text {
           text-align: start;
+        }
+        .reactions {
+          margin-top: 8px;
+          width: 50px;
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .thumb {
+            fill: gray;
+            cursor: pointer;
+
+            &:hover {
+              fill: black;
+            }
+          }
+
+          .thumb_down {
+            transform: rotate(180deg);
+          }
         }
       }
 

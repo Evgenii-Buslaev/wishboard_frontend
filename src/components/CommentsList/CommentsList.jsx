@@ -39,7 +39,12 @@ const CommentsList = ({ auth, user, list, setList }) => {
       <div className={styles.comments}>
         {list.length > 0
           ? list.map((data) => (
-              <CommentItem comment={data} remove={removeComment} user={user} />
+              <CommentItem
+                comment={data}
+                remove={removeComment}
+                user={user}
+                key={Math.random()}
+              />
             ))
           : "Никто не прокомментировал пожелание..."}
       </div>
