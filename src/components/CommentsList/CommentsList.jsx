@@ -34,6 +34,20 @@ const CommentsList = ({ auth, user, list, setList }) => {
     }
   };
 
+  const updateComment = (newComment) => {
+    if (!auth) return;
+    const comments = card.comments.filter(
+      (comment) => comment.commentId !== newComment.commentId
+    );
+    setList([...comments, newComment]);
+    dispatch(
+      updateCard({
+        ...card,
+        comments: [...comments, newComment],
+      })
+    );
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.comments}>
@@ -41,6 +55,7 @@ const CommentsList = ({ auth, user, list, setList }) => {
           ? list.map((data) => (
               <CommentItem
                 comment={data}
+                update={updateComment}
                 remove={removeComment}
                 user={user}
                 key={Math.random()}

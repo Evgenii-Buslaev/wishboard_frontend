@@ -27,7 +27,13 @@ const CommentForm = ({ user, createComment }) => {
       ...card,
       comments: [
         ...card.comments,
-        { commentId: v4(), author: user.name, comment },
+        {
+          commentId: v4(),
+          author: user.name,
+          comment,
+          likes: [],
+          dislikes: [],
+        },
       ],
     };
     dispatch(updateCard(editedCard));
