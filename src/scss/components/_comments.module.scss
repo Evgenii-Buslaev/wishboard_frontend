@@ -68,13 +68,15 @@
               fill: gray;
               cursor: pointer;
 
+              &_active {
+                fill: red;
+              }
+              &_down {
+                transform: rotate(180deg);
+              }
               &:hover {
                 fill: black;
               }
-            }
-
-            .thumb_down {
-              transform: rotate(180deg);
             }
 
             p {
@@ -87,7 +89,6 @@
       }
 
       .deleteBtn {
-        margin: 15px 0 0;
         width: 10px;
         justify-self: flex-end;
         cursor: pointer;

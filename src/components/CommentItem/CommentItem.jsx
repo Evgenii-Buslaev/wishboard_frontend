@@ -1,25 +1,35 @@
+import { useState } from "react";
 import styles from "../../scss/components/_comments.module.scss";
 
 import { ReactComponent as Close } from "../../assets/icons/close.svg";
 import { ReactComponent as Thumb } from "../../assets/icons/thumb.svg";
 
 const CommentItem = ({ comment, remove, update, user }) => {
+  const [like, setLike] = useState(() =>
+    Boolean(comment.likes.find((like) => like.id === user._id))
+  );
+  const [dislike, setDislike] = useState(() =>
+    Boolean(comment.dislikes.find((dislike) => dislike.id === user._id))
+  );
+
   const addLike = () => {
     if (!user) {
       return;
     }
     let newComment;
-    const userLike = comment.likes.find((like) => like.id === user._id);
-    if (userLike) {
+    if (like) {
       newComment = {
         ...comment,
         likes: [...comment.likes.filter((like) => like.id !== user._id)],
       };
+      setLike(false);
     } else {
+      if (dislike) return;
       newComment = {
         ...comment,
         likes: [...comment.likes, { name: user.name, id: user._id }],
       };
+      setLike(true);
     }
     update(newComment);
   };
@@ -29,21 +39,21 @@ const CommentItem = ({ comment, remove, update, user }) => {
       return;
     }
     let newComment;
-    const userDisike = comment.dislikes.find(
-      (dislike) => dislike.id === user._id
-    );
-    if (userDisike) {
+    if (dislike) {
       newComment = {
         ...comment,
         dislikes: [
           ...comment.dislikes.filter((dislike) => dislike.id !== user._id),
         ],
       };
+      setDislike(false);
     } else {
+      if (like) return;
       newComment = {
         ...comment,
         dislikes: [...comment.dislikes, { name: user.name, id: user._id }],
       };
+      setDislike(true);
     }
     update(newComment);
   };
@@ -54,12 +64,21 @@ const CommentItem = ({ comment, remove, update, user }) => {
         <h4 className={styles.text}>{comment.comment}</h4>
         <div className={styles.reactions}>
           <div className={styles.reaction__cont}>
-            <Thumb className={styles.thumb} onClick={addLike} />
+            <Thumb
+              className={
+                like ? `${styles.thumb} ${styles.thumb_active}` : styles.thumb
+              }
+              onClick={addLike}
+            />
             <p>{comment.likes.length}</p>
           </div>
           <div className={styles.reaction__cont}>
             <Thumb
-              className={`${styles.thumb} ${styles.thumb_down}`}
+              className={
+                dislike
+                  ? `${styles.thumb} ${styles.thumb_down} ${styles.thumb_active}`
+                  : `${styles.thumb} ${styles.thumb_down}`
+              }
               onClick={addDislike}
             />
             <p>{comment.dislikes.length}</p>
