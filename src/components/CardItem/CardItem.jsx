@@ -5,6 +5,7 @@ import useLike from "../../hooks/useLike";
 import CommentsList from "../CommentsList/CommentsList";
 
 import { ReactComponent as Like } from "../../assets/icons/like.svg";
+import { ReactComponent as More } from "../../assets/icons/more.svg";
 import { getDate } from "../../handlers/getDate";
 import defaultIcon from "../../assets/icons/default.jpg";
 import styles from "../../scss/components/_card.module.scss";
@@ -16,8 +17,15 @@ const CardItem = ({ data }) => {
   const [cardComments, setCardComments] = useState([]);
   const [likesVisible, setLikesVisible] = useState(false);
 
-  const checkLikers = () => {
-    setLikesVisible((prevState) => !prevState);
+  const checkLikers = (e) => {
+    if (window.innerWidth <= 1050) {
+      if (e.target.classList.value.includes("watchMore")) {
+        setLikesVisible((prevState) => !prevState);
+        return;
+      }
+    } else {
+      setLikesVisible((prevState) => !prevState);
+    }
   };
 
   const user = useSelector((state) => state.userReducer);
@@ -48,7 +56,6 @@ const CardItem = ({ data }) => {
             style={{
               position: "relative",
             }}
-            onClick={toggleLike}
             className={
               likedByUser
                 ? `${styles.likes_active} ${styles.likes}`
@@ -59,12 +66,18 @@ const CardItem = ({ data }) => {
               className={styles.like}
               onMouseEnter={checkLikers}
               onMouseLeave={checkLikers}
+              onClick={toggleLike}
             />
             <Likes likes={likes} visible={likesVisible} />
-            <h4 onMouseEnter={checkLikers} onMouseLeave={checkLikers}>
+            <h4
+              onMouseEnter={checkLikers}
+              onMouseLeave={checkLikers}
+              onClick={toggleLike}
+            >
               {cardLikes}
             </h4>
           </div>
+          <More className={styles.watchMore} onClick={(e) => checkLikers(e)} />
         </div>
         <CommentsList
           list={cardComments}

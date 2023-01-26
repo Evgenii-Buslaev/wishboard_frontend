@@ -114,6 +114,9 @@
           }
         }
       }
+      .watchMore {
+        display: none;
+      }
 
       .likes_active {
         .like {
@@ -151,9 +154,16 @@
       width: 400px;
       margin: 5px;
       .cardContent {
+        position: relative;
         margin: 10px 0;
         .likes {
           align-self: center;
+        }
+        .watchMore {
+          position: absolute;
+          right: 20px;
+          bottom: 18px;
+          display: block;
         }
       }
     }
