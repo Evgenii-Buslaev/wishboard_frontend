@@ -4,9 +4,15 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { sortList } from "../../handlers/sortList";
 
-import add from "../../assets/icons/add.svg";
 import CardListItem from "../CardListItem/CardListItem";
+import Select from "../../UI/Select";
+import add from "../../assets/icons/add.svg";
 import styles from "../../scss/components/_cards.module.scss";
+
+const cardsListOptions = [
+  { name: "Сначала новые", value: "date" },
+  { name: "По названию", value: "name" },
+];
 
 const CardsList = () => {
   const user = useSelector((state) => state.userReducer);
@@ -29,14 +35,11 @@ const CardsList = () => {
 
   return (
     <div className={styles.container}>
-      <select
-        className={styles.sort}
-        value={sort}
-        onChange={(e) => setSort(e.target.value)}
-      >
-        <option value="name">По названию</option>
-        <option value="date">Сначала новые</option>
-      </select>
+      <Select
+        options={cardsListOptions}
+        change={(e) => setSort(e.target.value)}
+        val={sort}
+      />
       <img
         src={add}
         alt="create card"
