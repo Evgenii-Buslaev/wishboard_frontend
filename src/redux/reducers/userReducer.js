@@ -19,7 +19,7 @@ if (document.cookie.split(";").find((str) => str.includes("user"))) {
   };
 } else {
   initialState = {
-    user: null,
+    user: { _id: null },
     loggedIn: false,
   };
 }
@@ -32,7 +32,7 @@ const userReducer = (state = initialState, action) => {
       return { ...state, user: action.data, loggedIn: true };
     case LOG_OUT:
       document.cookie = "user=null; max-age=-1";
-      return { ...state, user: null, loggedIn: false };
+      return { ...state, user: { _id: null }, loggedIn: false };
     case CREATE_USER:
       console.log(action);
       document.cookie = `user=${JSON.stringify(action.data)}; max-age=3600`;

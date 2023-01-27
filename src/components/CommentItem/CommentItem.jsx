@@ -13,7 +13,7 @@ const CommentItem = ({ comment, remove, update, user }) => {
   );
 
   const addLike = () => {
-    if (!user) {
+    if (!user.name) {
       return;
     }
     let newComment;
@@ -35,7 +35,7 @@ const CommentItem = ({ comment, remove, update, user }) => {
   };
 
   const addDislike = () => {
-    if (!user) {
+    if (!user.name) {
       return;
     }
     let newComment;
