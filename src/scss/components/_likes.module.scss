@@ -11,6 +11,11 @@
   box-shadow: 0 0 10px 5px rgb(196, 196, 196);
   background-color: rgba(205, 211, 197, 0.377);
 
+  @media (max-width: 1050px) {
+    background-color: rgba(205, 211, 197);
+    left: -120px;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
