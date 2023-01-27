@@ -33,6 +33,7 @@ const CommentForm = ({ user, createComment }) => {
           comment,
           likes: [],
           dislikes: [],
+          createdAt: Date.now(),
         },
       ],
     };

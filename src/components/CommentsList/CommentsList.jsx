@@ -11,13 +11,13 @@ import styles from "../../scss/components/_comments.module.scss";
 import Select from "../../UI/Select";
 
 const cardsListOptions = [
-  { name: "Сначала новые", value: "date" },
+  { name: "Сначала новые", value: "created" },
   { name: "Популярные", value: "liked" },
   { name: "Непопулярные", value: "disliked" },
 ];
 
 const CommentsList = ({ auth, user, list, setList }) => {
-  const [sort, setSort] = useState("date");
+  const [sort, setSort] = useState("created");
   const dispatch = useDispatch();
   const params = useParams();
 
