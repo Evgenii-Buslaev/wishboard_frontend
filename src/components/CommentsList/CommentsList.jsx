@@ -11,7 +11,8 @@ import styles from "../../scss/components/_comments.module.scss";
 import Select from "../../UI/Select";
 
 const cardsListOptions = [
-  { name: "Сначала новые", value: "created" },
+  { name: "Сначала новые", value: "created_new" },
+  { name: "Сначала старые", value: "created_old" },
   { name: "Популярные", value: "liked" },
   { name: "Непопулярные", value: "disliked" },
 ];
