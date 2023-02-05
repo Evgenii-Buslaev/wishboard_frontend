@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wishboard_frontend/static/css/main.2d7e1a92.css",
-    "main.js": "/wishboard_frontend/static/js/main.dbbff6a3.js",
+    "main.css": "/wishboard_frontend/static/css/main.58c34541.css",
+    "main.js": "/wishboard_frontend/static/js/main.a9238efd.js",
     "static/media/default.jpg": "/wishboard_frontend/static/media/default.132b27d6f80b258c07d0.jpg",
     "static/media/board.svg": "/wishboard_frontend/static/media/board.ae70997886e79045acfa7ec052b2bb21.svg",
     "static/media/vk.svg": "/wishboard_frontend/static/media/vk.5ebbe6ebb43fc11d2e22c72bf3d68fcc.svg",
@@ -11,18 +11,18 @@
     "static/media/user.svg": "/wishboard_frontend/static/media/user.fe1647d72dd81cd75507db0e69a5e0ad.svg",
     "static/media/github.svg": "/wishboard_frontend/static/media/github.87cff0564f976f095f72be3a2e8d1609.svg",
     "static/media/like.svg": "/wishboard_frontend/static/media/like.6147297d68680e5e3e5ec72dc3c23b41.svg",
-    "static/media/more.svg": "/wishboard_frontend/static/media/more.dc0cb2cf0c960ca86adb625168829cb9.svg",
+    "static/media/more.svg": "/wishboard_frontend/static/media/more.34ccdb5328f5c9d4476e5e7fa863f37a.svg",
     "static/media/close.svg": "/wishboard_frontend/static/media/close.1b34c71710961944c89f778e8d2a7525.svg",
     "index.html": "/wishboard_frontend/index.html",
     "static/media/add.svg": "/wishboard_frontend/static/media/add.4e94139d9e2c3d57fe8955469aedb044.svg",
     "static/media/thumb.svg": "/wishboard_frontend/static/media/thumb.6f774037ab4de1abd34ae738f42c705b.svg",
     "static/media/telegram.svg": "/wishboard_frontend/static/media/telegram.b21526e74adb6ffa69577701e9cec346.svg",
     "static/media/comment.svg": "/wishboard_frontend/static/media/comment.15010045a17061c5d424703f2f889cae.svg",
-    "main.2d7e1a92.css.map": "/wishboard_frontend/static/css/main.2d7e1a92.css.map",
-    "main.dbbff6a3.js.map": "/wishboard_frontend/static/js/main.dbbff6a3.js.map"
+    "main.58c34541.css.map": "/wishboard_frontend/static/css/main.58c34541.css.map",
+    "main.a9238efd.js.map": "/wishboard_frontend/static/js/main.a9238efd.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d7e1a92.css",
-    "static/js/main.dbbff6a3.js"
+    "static/css/main.58c34541.css",
+    "static/js/main.a9238efd.js"
   ]
 }
