@@ -10,6 +10,7 @@ const Home = () => {
       <div className={styles.container}>
         <div className={styles.begin}>
           <h1>Добро пожаловать!</h1>
+          <h2>Приветствем вас</h2>
           <button onClick={() => navigator("/cards")}>Начать работу</button>
         </div>
 
