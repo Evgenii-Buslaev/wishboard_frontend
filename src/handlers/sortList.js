@@ -4,9 +4,14 @@ const sortList = (list, sort) => {
       return Date.parse(b.createdAt) - Date.parse(a.createdAt);
     });
   }
-  if (sort === "created") {
+  if (sort === "created_new") {
     return list.sort((a, b) => {
       return b.createdAt - a.createdAt;
+    });
+  }
+  if (sort === "created_old") {
+    return list.sort((a, b) => {
+      return a.createdAt - b.createdAt;
     });
   }
   if (sort === "liked") {
